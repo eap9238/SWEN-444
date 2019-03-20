@@ -1,0 +1,755 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+table {
+    margin: 10px;
+    padding: 10px;
+    padding-left: 15px;
+    font-size: 20px;
+    width: 480px;
+}
+
+td, th {
+    padding: 10px;
+    padding-left: 15px;
+    font-size: 20px;
+    border: inherit;
+    border-radius: inherit;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+    border: 2px solid #dddddd;
+    border-radius: 4px;
+}
+
+.tLeft, .tRight {
+    padding: 10px;
+    padding-left: 15px;
+    font-size: 20px;
+}
+
+.tRight {
+    font-weight: bold;
+}
+
+.tBtn {
+    color: #555555;
+    margin: 10px;
+    font-size: 1.3em;
+    text-decoration: none;
+    padding: 5px;
+    border: 2p solid #B0B0B0;
+    border-radius: 4px;
+    background-color: #B0B0B0;
+}
+
+#tContainer {
+    height: calc(100% - (50px));
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 40px;
+}
+
+#copyright {
+    position: fixed; 
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+}
+
+#logo {
+    height: 40px;
+    width: 40;
+    padding-top: 5px;
+    float:left;
+    border-radius: 8px;
+}
+
+nav {
+    width: 100%;
+    height: 50px;
+    background-color: #55acee;
+}
+
+nav:nth-child(1) {
+    padding-left: 25px;
+}
+
+.fullSize {
+    width: 100%;
+    height: 100%;
+}
+
+.navlink {
+    padding: 5px;
+    padding-top: 12px;
+    padding-left: 20px;
+    color: white;
+    font-size: 1.3em;
+    float: left;
+}
+
+.navstud {
+    padding: 5px;
+    padding-top: 12px;
+    padding-right: 20px;
+    color: white;
+    font-size: 1.3em;
+    float: right;
+}
+
+.navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active .navstud a, .navstud a:link, .navstud a:visited, .navstud a:hover, .navstud a:active {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #55acee;
+    transition: background-color 0.4s ease;
+}
+
+.navlink a:hover {
+    transition: background-color 0.8s ease;
+    background-color: #66bdff;
+}
+
+.modalForm {
+    border: 2px solid #338acc;
+    height: 35px;
+    width: 140px;
+    margin-top:0px;
+    padding-top:10px;
+    padding-left:10px;
+    background-color: #55acee;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.makeModalSubmit {
+    transition: background-color 0.4s ease;
+    display: inline;
+    width: 90px;
+    background-color: #55acee;
+    border-radius: 2px;
+    color: white;
+    text-decoration: none;
+}
+
+.domoForm {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.domoDate {
+    float: right;
+    margin-right: 20px;
+    text-align: right;
+}
+
+.domoFormObject {
+    background-color: #55acee;
+    border-radius: 4px;
+    border: 2px solid #338acc;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 385px;
+}
+
+#domoBody, #domoColour {
+    margin-left: 10px;
+}
+
+.domoForm label {
+    display: inline-block;
+    width: 160px;
+    margin-left: 10px;
+    font-size: 1.2em;
+    /* float: left; */
+    /* float: left; */
+    color: white;
+}
+
+.domoForm input[type=text], textarea, select, input[type=date] {
+    margin-left: 10px;
+    /* margin: auto; */
+    width: 320px;
+    height: 40px;
+    /* float:left; */
+}
+
+.domoForm input[type=text]{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.domoForm textarea {
+    resize: none;
+    padding-top: 5px;
+    height: 160px;
+}
+
+.domoForm textarea, select, option, input[type=date] {
+    font-size: 1.25em;
+}
+
+.domoForm select, option {
+    height: 80px;
+    width: 80px;
+}
+
+.makeDomoSubmit {
+    transition: background-color 0.4s ease;
+    display: inline;
+    width: 90px;
+    background-color: #55acee;
+    border-radius: 2px;
+    color: white;
+    text-decoration: none;
+}
+
+.makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
+    color: white;
+}
+
+.makeDomoSubmit:hover {
+    transition: background-color 0.4s ease;
+    background-color: #338acc;
+}
+
+.formSubmit {
+    transition: background-color 0.4s ease;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 14px;
+    font-size: 1.2em;
+    width: 100px;
+    background-color: #55acee;
+    border-radius: 2px;
+    border-color: #66acee;
+    padding: 3px 0px;
+    color: white;
+    text-decoration: none;
+}
+
+.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
+    color: white;
+}
+
+.formSubmit:hover {
+    transition: background-color 0.4s ease;
+    background-color: #338acc;
+}
+
+#user, #pass, #pass2 {
+    text-align: center;
+    font-size: 1.1em;
+    /*
+    width: 180px;
+    */
+    border-radius: 6px;
+}
+
+#user:focus, #pass:focus, #pass2:focus {
+    outline: none;
+    box-shadow: 0px 0px 1px 1px #55acee;
+}
+
+#domoMessage {
+    display:none;
+    top: 250px;
+    width: 250px;
+    height: 650px;
+    position: absolute;
+    z-index: 200;
+    right: 0px;
+    overflow: hidden;
+}
+
+#domoMessage h3 {
+    width: 200px;
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+
+#speech {
+    height: 120px;
+    width: 250px;
+    z-index:300;
+}
+
+#errorMessage {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: red;
+    font-style: italic;
+}
+
+#domo {
+    z-index: 225;
+    margin-top: -20px;
+    margin-left: 135px;
+    height: 450px;
+    width: 300px;
+    -ms-transform: rotate(330deg);
+    -webkit-transform: rotate(330deg); 
+    transform: rotate(330deg);
+}
+
+#domos {
+    width: 55em;
+    border: 2px solid #55acee;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 5px;
+}
+
+@media (max-width: 912px) {
+    #domos {
+        width: 28.5em;
+        border: 2px solid #55acee;
+        border-radius: 4px;
+        margin: 0 auto;
+        margin-top: 100px;
+        padding: 5px;
+    }
+}
+
+.domoList {
+    overflow: hidden;
+    font-size: 1em;
+    padding: .5em;
+    
+    -moz-column-width: 25em;
+    -webkit-column-width: 25em;
+    column-width: 25em;
+    
+    -moz-column-gap: 0em;
+    -webkit-column-gap: 0em;
+    column-gap: 0em;
+}
+
+.red {
+    position: relative;
+    display: inline-block;
+    width: 25em;
+    margin: .75em;
+    border: 2px solid #DF2935;
+    border-radius: 4px;
+    background-color: #DF2935;
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+}
+
+.red:hover {
+    transition: border-color 0.2s ease-out;
+    border-color: rgba(255,255,255, 0.8);
+    transition: background-color 2.6s ease-out;
+    background-color: #B7101C;
+}
+
+.red > .domoBody {
+    float: right;
+    text-align: left;
+    width: 90%;
+    padding: 5px;
+    padding-right: 40px;
+    font-size: 1.25em;
+    background-color: #F0515D;
+    border-left: 6px solid #FA7B84;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.red .makeDomoDelete {
+    transition: background-color 0.4s ease;
+    display: block;
+    width: 24px;    
+    height: 24px;
+    background-color: #F0515D;
+    text-align: center;
+    border: 2px solid #F0515D;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    margin-top: 2px;
+    margin-right: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.orange {
+    position: relative;
+    display: inline-block;
+    width: 25em;
+    margin: .75em;
+    border: 2px solid #FFAE03;
+    border-radius: 4px;
+    background-color: #FFAE03;
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+}
+
+.orange:hover {
+    transition: border-color 0.2s ease-out;
+    border-color: rgba(255,255,255, 0.8);
+    transition: background-color 2.6s ease-out;
+    background-color: #C78700;
+}
+
+.orange > .domoBody {
+    float: right;
+    text-align: left;
+    width: 90%;
+    padding: 5px;
+    padding-right: 40px;
+    font-size: 1.25em;
+    background-color: #FFC03B;
+    border-left: 6px solid #FFCD65;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.orange .makeDomoDelete {
+    transition: background-color 0.4s ease;
+    display: block;
+    width: 24px;    
+    height: 24px;
+    background-color: #FFC03B;
+    border: 2px solid #FFC03B;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    margin-top: 2px;
+    margin-right: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.yellow {
+    position: relative;
+    display: inline-block;
+    width: 25em;
+    margin: .75em;
+    border: 2px solid #FFE74C;
+    border-radius: 4px;
+    background-color: #FFE74C;
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+}
+
+.yellow:hover {
+    transition: border-color 0.2s ease-out;
+    border-color: rgba(255,255,255, 0.8);
+    transition: background-color 2.6s ease-out;
+    background-color: #EED322;
+}
+
+.yellow > .domoBody {
+    float: right;
+    text-align: left;
+    width: 90%;
+    padding: 5px;
+    padding-right: 40px;
+    font-size: 1.25em;
+    background-color: #FFEC6F;
+    border-left: 6px solid #FFF19A;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.yellow .makeDomoDelete {
+    transition: background-color 0.4s ease;
+    display: block;
+    width: 24px;    
+    height: 24px;
+    background-color: #FFEC6F;
+    text-align: center;
+    border: 2px solid #FFEC6F;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    margin-top: 2px;
+    margin-right: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.green {
+    position: relative;
+    display: inline-block;
+    width: 25em;
+    margin: .75em;
+    border: 2px solid #35FF69;
+    border-radius: 4px;
+    background-color: #35FF69;
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+}
+
+.green:hover {
+    transition: border-color 0.2s ease-out;
+    border-color: rgba(255,255,255, 0.8);
+    transition: background-color 2.6s ease-out;
+    background-color: #05FF47;
+}
+
+.green > .domoBody {
+    float: right;
+    text-align: left;
+    width: 90%;
+    padding: 5px;
+    padding-right: 40px;
+    font-size: 1.25em;
+    background-color: #60FF8A;
+    border-left: 6px solid #92FEAE;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.green .makeDomoDelete {
+    transition: background-color 0.4s ease;
+    display: block;
+    width: 24px;    
+    height: 24px;
+    background-color: #60FF8A;
+    text-align: center;
+    border: 2px solid #60FF8A;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    margin-top: 2px;
+    margin-right: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.blue {
+    position: relative;
+    display: inline-block;
+    width: 25em;
+    margin: .75em;
+    border: 2px solid #30BCED;
+    border-radius: 4px;
+    background-color: #30BCED;
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+}
+
+.blue:hover {
+    transition: border-color 0.2s ease-out;
+    border-color: rgba(255,255,255, 0.8);
+    transition: background-color 2.6s ease-out;
+    background-color: #08AFE6;
+}
+
+.blue > .domoBody {
+    float: right;
+    text-align: left;
+    width: 90%;
+    padding: 5px;
+    padding-right: 40px;
+    font-size: 1.25em;
+    background-color: #58CBF1;
+    border-left: 6px solid #86D9F5;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.blue .makeDomoDelete {
+    transition: background-color 0.4s ease;
+    display: block;
+    width: 24px;    
+    height: 24px;
+    background-color: #58CBF1;
+    text-align: center;
+    border: 2px solid #58CBF1;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    margin-top: 3px;
+    margin-right: 3px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+img.domoFace {
+    margin-left: 25px;
+    margin-right: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 4px;
+    margin-top:10px;
+    float:left;
+}
+
+h3.emptyDomo {
+    width: 400px;
+    font-size: 1.5em;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 18px;
+}
+
+h3.domoTitle {
+    float:left;
+    width: 200px;
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 1.5em;
+}
+
+div.domoBody {
+    float: right;
+    text-align: left;
+    width: 80%;
+    padding: 5px;
+    padding-right: 40px;
+    font-size: 1.25em;
+    background-color: #90D1FF;
+    border-left: 6px solid #C5E7FF;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+#bodyContainer {
+  height: calc(100% - (50px)); 
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-cpass {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-cpass .checkbox {
+  font-weight: 400;
+}
+
+.form-cpass .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-cpass .form-control:focus {
+  z-index: 2;
+}
+
+.form-cpass input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-cpass input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#inputPassword {
+  margin-bottom: 0px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#oldPass {
+  margin-bottom: -1px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#inputPassword2 {
+  margin-top: -1px;
+}
+
+
+/*
+.domo:first-child {
+    margin-top: 10px;
+}
+
+.domo:last-child {
+    margin-bottom:10px;
+}
+*/
