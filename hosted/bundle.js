@@ -144,48 +144,6 @@ var DomoList = function DomoList(props) {
   }
 
   var domoNodes = props.domos.map(function (domo) {
-
-    if (domo.date != domo.duedate) {
-      return React.createElement(
-        "div",
-        { key: domo._id, className: domo.colour },
-        React.createElement(
-          "h3",
-          { className: "domoTitle" },
-          domo.title
-        ),
-        React.createElement(
-          "h4",
-          { className: "domoDate" },
-          "Scheduled: ",
-          React.createElement("br", null),
-          " ",
-          React.createElement(
-            "a",
-            { href: "https://www.google.com/calendar/render?action=TEMPLATE&text=" + domo.title + "&dates=" + domo.duedate.substring(6, 10) + domo.duedate.substring(0, 2) + domo.duedate.substring(3, 5) + "T224000Z/" + domo.duedate.substring(6, 10) + domo.duedate.substring(0, 2) + domo.duedate.substring(3, 5) + "T221500Z&details=" + domo.body },
-            domo.duedate,
-            "  "
-          )
-        ),
-        React.createElement(
-          "div",
-          { className: "domoBody" },
-          domo.body
-        ),
-        React.createElement(
-          "form",
-          { id: domo._id,
-            onSubmit: handleDelete,
-            name: "deleteDomo",
-            action: "/deleteDomo",
-            method: "DELETE"
-          },
-          React.createElement("input", { type: "hidden", name: "_id", value: domo._id }),
-          React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf }),
-          React.createElement("input", { className: "makeDomoDelete", type: "submit", value: "X" })
-        )
-      );
-    } else {
       return React.createElement(
         "div",
         { key: domo._id, className: domo.colour },
@@ -221,7 +179,6 @@ var DomoList = function DomoList(props) {
           React.createElement("input", { className: "makeDomoDelete", type: "submit", value: "X" })
         )
       );
-    }
   });
 
   return React.createElement(

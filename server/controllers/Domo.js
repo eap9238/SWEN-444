@@ -19,27 +19,12 @@ const makeDomo = (req, res) => {
     return res.status(400).json({ error: 'Please fill out all fields' });
   }
 
-  /*
-  if (req.body.duedate) {
-    return res.status(400).json({ error: req.body.duedate });
-  }
-  */
-
-
   // set internal data
   const domoData = {
     title: req.body.title,
     body: req.body.body,
     owner: req.session.account._id,
   };
-
-  if (req.body.duedate) {
-    domoData.duedate = `${req.body.duedate.substring(5, 7)}`;
-    domoData.duedate += `/${req.body.duedate.substring(8, 10)}`;
-    domoData.duedate += `/${req.body.duedate.substring(0, 4)}`;
-      // domoData.duedate = req.body.duedate;
-  }
-
 
   // console.dir(domoData.colour);
   // console.dir(req.body.colour);
