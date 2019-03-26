@@ -26,9 +26,6 @@ const showModal = (e) => {
 const hideModal = (e) => {
   e.preventDefault();
     
-  document.getElementById("domoTitle").textContent = "";
-  document.getElementById("domoBody").textcontent = "";
-    
   document.getElementById("domoForm").style.display = "none";
 };
 
@@ -45,6 +42,9 @@ const handleDelete = (e) => {
 const DomoForm = (props) => {    
   document.getElementById("modal").onclick = function() {
       document.getElementById("domoForm").style.display = "block";
+    
+  	  document.getElementById("domoTitle").textContent = "";
+  	  document.getElementById("domoBody").textcontent = "";
   };
     
   return (
