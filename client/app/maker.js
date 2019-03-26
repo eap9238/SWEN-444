@@ -64,32 +64,6 @@ const DomoForm = (props) => {
             <br/>
             <br/>
       
-            <!--
-            <label for="duedate">Due date (Optional):</label>
-    
-            <br/>
-      
-            <input type="date" id="dueDate" name="duedate"/>
-
-            <br/>
-            <br/>
-      
-            <label htmlFor="colour">Colour: </label>
-            <br/>
-            <select id="domoColour" name="colour">
-                <option style={{backgroundColor:'#DF2935'}} value="red">red</option>
-                <option style={{backgroundColor:'#FFE74C'}} value="yellow">yellow</option>
-                <option selected style={{backgroundColor:'#30BCED'}} value="blue">blue</option>
-                <option style={{backgroundColor:'#FFAE03'}} value="orange">orange</option>
-                <option style={{backgroundColor:'#35FF69'}} value="green">green</option>
-            </select>
-            <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
-      
-            <br/>
-            <br/>
-            
-            -->
-      
             <input className="makeDomoSubmit" type="submit" value="Post"/>
             <input className="makeDomoSubmit" onClick={hideModal} type="button" value="Exit"/>
         </div>
