@@ -31,7 +31,6 @@ const makeDomo = (req, res) => {
     title: req.body.title,
     body: req.body.body,
     owner: req.session.account._id,
-    colour: req.body.colour,
   };
 
   if (req.body.duedate) {
@@ -54,7 +53,7 @@ const makeDomo = (req, res) => {
   domoPromise.catch((err) => {
     console.log(err);
     if (err.code === 11000) {
-      return res.status(400).json({ error: 'Domo already exists' });
+      return res.status(400).json({ error: 'Post already exists' });
     }
 
     return res.status(400).json({ error: 'An error occured' });

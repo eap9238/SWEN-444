@@ -38,6 +38,7 @@ const DomoSchema = new mongoose.Schema({
   },
   colour: {
     type: String,
+    default: 'blue',
   },
 });
 

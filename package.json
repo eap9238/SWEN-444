@@ -1,5 +1,5 @@
 {
-  "name": "Logins",
+  "name": "OurSpace",
   "version": "1.0.0",
   "engines": {
     "node": "7.5.0",
@@ -24,7 +24,7 @@
     "Redis",
     "Login"
   ],
-  "author": "Cody Van De Mark",
+  "author": "Eleanor Post",
   "license": "Apache 2.0",
   "dependencies": {
     "body-parser": "^1.15.0",
