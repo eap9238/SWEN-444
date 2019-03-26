@@ -253,7 +253,7 @@ const createMyAccount = (csrf) => {
 
 const DomoCount = function(props) {
     return (
-        <a href="/maker">Notes: {props.domos.length}</a>
+        <a href="/maker">Posts: {props.domos.length}</a>
     );
 };
 
