@@ -64,7 +64,7 @@ const DomoForm = (props) => {
             <br/>
             <br/>
       
-            /*
+            <!--
             <label for="duedate">Due date (Optional):</label>
     
             <br/>
@@ -88,7 +88,7 @@ const DomoForm = (props) => {
             <br/>
             <br/>
             
-            */
+            -->
       
             <input className="makeDomoSubmit" type="submit" value="Post"/>
             <input className="makeDomoSubmit" onClick={hideModal} type="button" value="Exit"/>
