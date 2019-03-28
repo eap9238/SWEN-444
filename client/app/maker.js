@@ -42,9 +42,6 @@ const handleDelete = (e) => {
 const DomoForm = (props) => {    
   document.getElementById("modal").onclick = function() {
       document.getElementById("domoForm").style.display = "block";
-    
-  	  document.getElementById("domoTitle").textContent = "";
-  	  document.getElementById("domoBody").textcontent = "";
   };
     
   return (
@@ -63,8 +60,31 @@ const DomoForm = (props) => {
       
             <br/>
             <br/>
+            
+            <label for="duedate">Due date (Optional):</label>
+    
+            <br/>
       
-            <input className="makeDomoSubmit" type="submit" value="Post"/>
+            <input type="date" id="duedate" name="duedate"/>
+
+            <br/>
+            <br/>
+      
+            <label htmlFor="colour">Colour: </label>
+            <br/>
+            <select id="domoColour" name="colour">
+                <option style={{backgroundColor:'#DF2935'}} value="red">red</option>
+                <option style={{backgroundColor:'#FFE74C'}} value="yellow">yellow</option>
+                <option selected style={{backgroundColor:'#30BCED'}} value="blue">blue</option>
+                <option style={{backgroundColor:'#FFAE03'}} value="orange">orange</option>
+                <option style={{backgroundColor:'#35FF69'}} value="green">green</option>
+            </select>
+            <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+      
+            <br/>
+            <br/>
+      
+            <input className="makeDomoSubmit" type="submit" value="Make Domo"/>
             <input className="makeDomoSubmit" onClick={hideModal} type="button" value="Exit"/>
         </div>
     </form>
@@ -88,23 +108,45 @@ const DomoList = function(props) {
   }
 
   const domoNodes = props.domos.map(function(domo) {
-	return (
-	  <div key={domo._id} className={domo.colour}>
-		<h3 className="domoTitle">{domo.title}</h3>
-		<h4 className="domoDate">Created: <br/> {domo.date}  </h4>
-		<div className="domoBody">{domo.body}</div>
-		<form id={domo._id}
-			  onSubmit={handleDelete}
-			  name="deleteDomo"
-			  action="/deleteDomo"
-			  method="DELETE"
-		>
-			<input type="hidden" name="_id" value={domo._id}/>
-			<input type="hidden" id="token" name="_csrf" value={props.csrf}/>
-			<input className="makeDomoDelete" type="submit" value="X"/>
-		</form>
-	  </div>
-	);
+      
+    if (domo.date != domo.duedate) {
+        return (
+          <div key={domo._id} className={domo.colour}>
+            <h3 className="domoTitle">{domo.title}</h3>
+            <h4 className="domoDate">Scheduled: <br/> <a href={"https://www.google.com/calendar/render?action=TEMPLATE&text=" + domo.title + "&dates=" + domo.duedate.substring(6,10) + domo.duedate.substring(0,2) + domo.duedate.substring(3,5) + "T224000Z/" + domo.duedate.substring(6,10) + domo.duedate.substring(0,2) + domo.duedate.substring(3,5) + "T221500Z&details=" + domo.body}>{domo.duedate}  </a></h4>
+            <div className="domoBody">{domo.body}</div>
+            <form id={domo._id}
+                  onSubmit={handleDelete}
+                  name="deleteDomo"
+                  action="/deleteDomo"
+                  method="DELETE"
+            >            
+                <input type="hidden" name="_id" value={domo._id}/>
+                <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+                <input className="makeDomoDelete" type="submit" value="X"/>
+            </form>
+          </div>
+        );
+    }
+    else {
+        return (
+          <div key={domo._id} className={domo.colour}>
+            <h3 className="domoTitle">{domo.title}</h3>
+            <h4 className="domoDate">Created: <br/> {domo.date}  </h4>
+            <div className="domoBody">{domo.body}</div>
+            <form id={domo._id}
+                  onSubmit={handleDelete}
+                  name="deleteDomo"
+                  action="/deleteDomo"
+                  method="DELETE"
+            >
+                <input type="hidden" name="_id" value={domo._id}/>
+                <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+                <input className="makeDomoDelete" type="submit" value="X"/>
+            </form>
+          </div>
+        );
+      }
   });
 
   return (
@@ -213,7 +255,7 @@ const createMyAccount = (csrf) => {
 
 const DomoCount = function(props) {
     return (
-        <a href="/maker">Posts: {props.domos.length}</a>
+        <a href="/maker">Notes: {props.domos.length}</a>
     );
 };
 
