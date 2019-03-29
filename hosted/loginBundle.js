@@ -145,12 +145,12 @@ var SignupWindow = function SignupWindow(props) {
         ),
         React.createElement(
           'option',
-          { value: 'English' },
+          { value: 'Espa\xF1ol' },
           'Espa\xF1ol'
         ),
         React.createElement(
           'option',
-          { value: 'English' },
+          { value: 'Fran\xE7ais' },
           'Fran\xE7ais'
         )
       ),

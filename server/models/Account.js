@@ -52,6 +52,7 @@ AccountSchema.statics.toAPI = doc => ({
   createdDate: doc.createdDate,
   _id: doc._id,
   type: doc.type,
+  language: doc.language,
   friends: doc.friends,
 });
 

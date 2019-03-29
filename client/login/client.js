@@ -105,8 +105,8 @@ const SignupWindow = (props) => {
             <label htmlFor='language' className="sr-only">Language</label>
             <select id='language' name="language"className="form-control">
                 <option value="English">English</option>
-                <option value="English">Español</option>
-                <option value="English">Français</option>
+                <option value="Español">Español</option>
+                <option value="Français">Français</option>
             </select>
 
             <input type='hidden' name='_csrf' value={props.csrf} />
