@@ -32,6 +32,10 @@ const AccountSchema = new mongoose.Schema({
     type: String,
     default: "Free",
   },
+  language: {
+    type: String,
+    default: "English"
+  },
   class: {
     type: String,
   },

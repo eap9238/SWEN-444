@@ -44,8 +44,9 @@ const signup = (request, response) => {
   req.body.username = `${req.body.username}`;
   req.body.pass = `${req.body.inputPassword}`;
   req.body.pass2 = `${req.body.inputPassword2}`;
+  req.body.lang = `${req.body.language}`;
 
-  if (!req.body.username || !req.body.pass || !req.body.pass2) {
+  if (!req.body.username || !req.body.pass || !req.body.pass2 || !req.body.lang) {
     return res.status(400).json({ error: 'All fields are required!' });
   }
 
@@ -58,6 +59,7 @@ const signup = (request, response) => {
       username: req.body.username,
       salt,
       password: hash,
+      language: req.body.lang
     };
 
     const newAccount = new Account.AccountModel(accountData);

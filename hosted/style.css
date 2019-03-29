@@ -743,6 +743,9 @@ div.domoBody {
   margin-top: -1px;
 }
 
+#language {
+    margin-top: -3px;
+}
 
 /*
 .domo:first-child {

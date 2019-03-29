@@ -28,7 +28,7 @@ var handleSignup = function handleSignup(e) {
   $('#domoMessage').animate({ width: 'hide' }, 350);
 
   // IF not all of the fields are filled in...
-  if ($('#inputEmail').val() == '' || $('#inputPassword').val() == '' || $('#inputPassword2').val() == '') {
+  if ($('#inputEmail').val() == '' || $('#inputPassword').val() == '' || $('#inputPassword2').val() == '' || $('#language').val() == '') {
     handleError("Please select options for all fields");
     return false;
   }
@@ -130,6 +130,16 @@ var SignupWindow = function SignupWindow(props) {
         'Password'
       ),
       React.createElement('input', { id: 'inputPassword2', name: 'inputPassword2', type: 'password', className: 'form-control', required: true, placeholder: 'retype password' }),
+      React.createElement(
+        'label',
+        {htmlFor: 'language', className: 'sr-only'},
+        'Language'
+      ),
+      React.createElement('select', { id: 'language', name: 'language', className: 'form-control'},
+          React.createElement("option", {value: "English"}, "English"),
+          React.createElement("option", {value: "Español"}, "Español"),
+          React.createElement("option", {value: "Français"}, "Français"),
+          )
       React.createElement('input', { type: 'hidden', name: '_csrf', value: props.csrf }),
       React.createElement('br', null),
       React.createElement(
