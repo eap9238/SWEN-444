@@ -57,7 +57,7 @@ const getDomos = (request, response) => {
   const res = response;
     
     // Actually getting the Domos
-  return Domo.DomoModel.findByOwner(req.session.account._id, (err, docs) => {
+  return Domo.DomoModel.findByOwner("5c9e8a770f052a00161fc94c", (err, docs) => {
     if (err) {
       console.log(err);
       return res.status(400).json({ error: 'An error occured' });
