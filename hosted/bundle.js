@@ -70,52 +70,6 @@ var DomoForm = function DomoForm(props) {
       ),
       React.createElement("br", null),
       React.createElement("textarea", { id: "domoBody", name: "body", cols: "27", wrap: "hard", placeholder: "Note Contents" }),
-      React.createElement("br", null),
-      React.createElement("br", null),
-      React.createElement(
-        "label",
-        { "for": "duedate" },
-        "Due date (Optional):"
-      ),
-      React.createElement("br", null),
-      React.createElement("input", { type: "date", id: "duedate", name: "duedate" }),
-      React.createElement("br", null),
-      React.createElement("br", null),
-      React.createElement(
-        "label",
-        { htmlFor: "colour" },
-        "Colour: "
-      ),
-      React.createElement("br", null),
-      React.createElement(
-        "select",
-        { id: "domoColour", name: "colour" },
-        React.createElement(
-          "option",
-          { style: { backgroundColor: '#DF2935' }, value: "red" },
-          "red"
-        ),
-        React.createElement(
-          "option",
-          { style: { backgroundColor: '#FFE74C' }, value: "yellow" },
-          "yellow"
-        ),
-        React.createElement(
-          "option",
-          { selected: true, style: { backgroundColor: '#30BCED' }, value: "blue" },
-          "blue"
-        ),
-        React.createElement(
-          "option",
-          { style: { backgroundColor: '#FFAE03' }, value: "orange" },
-          "orange"
-        ),
-        React.createElement(
-          "option",
-          { style: { backgroundColor: '#35FF69' }, value: "green" },
-          "green"
-        )
-      ),
       React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf }),
       React.createElement("br", null),
       React.createElement("br", null),
@@ -144,84 +98,41 @@ var DomoList = function DomoList(props) {
   }
 
   var domoNodes = props.domos.map(function (domo) {
-
-    if (domo.date != domo.duedate) {
-      return React.createElement(
+    return React.createElement(
+      "div",
+      { key: domo._id, className: "blue" },
+      React.createElement(
+        "h3",
+        { className: "domoTitle" },
+        domo.title
+      ),
+      React.createElement(
+        "h4",
+        { className: "domoDate" },
+        "Created: ",
+        React.createElement("br", null),
+        " ",
+        domo.date,
+        "  "
+      ),
+      React.createElement(
         "div",
-        { key: domo._id, className: domo.colour },
-        React.createElement(
-          "h3",
-          { className: "domoTitle" },
-          domo.title
-        ),
-        React.createElement(
-          "h4",
-          { className: "domoDate" },
-          "Scheduled: ",
-          React.createElement("br", null),
-          " ",
-          React.createElement(
-            "a",
-            { href: "https://www.google.com/calendar/render?action=TEMPLATE&text=" + domo.title + "&dates=" + domo.duedate.substring(6, 10) + domo.duedate.substring(0, 2) + domo.duedate.substring(3, 5) + "T224000Z/" + domo.duedate.substring(6, 10) + domo.duedate.substring(0, 2) + domo.duedate.substring(3, 5) + "T221500Z&details=" + domo.body },
-            domo.duedate,
-            "  "
-          )
-        ),
-        React.createElement(
-          "div",
-          { className: "domoBody" },
-          domo.body
-        ),
-        React.createElement(
-          "form",
-          { id: domo._id,
-            onSubmit: handleDelete,
-            name: "deleteDomo",
-            action: "/deleteDomo",
-            method: "DELETE"
-          },
-          React.createElement("input", { type: "hidden", name: "_id", value: domo._id }),
-          React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf }),
-          React.createElement("input", { className: "makeDomoDelete", type: "submit", value: "X" })
-        )
-      );
-    } else {
-      return React.createElement(
-        "div",
-        { key: domo._id, className: domo.colour },
-        React.createElement(
-          "h3",
-          { className: "domoTitle" },
-          domo.title
-        ),
-        React.createElement(
-          "h4",
-          { className: "domoDate" },
-          "Created: ",
-          React.createElement("br", null),
-          " ",
-          domo.date,
-          "  "
-        ),
-        React.createElement(
-          "div",
-          { className: "domoBody" },
-          domo.body
-        ),
-        React.createElement(
-          "form",
-          { id: domo._id,
-            onSubmit: handleDelete,
-            name: "deleteDomo",
-            action: "/deleteDomo",
-            method: "DELETE"
-          },
-          React.createElement("input", { type: "hidden", name: "_id", value: domo._id }),
-          React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf }),
-          React.createElement("input", { className: "makeDomoDelete", type: "submit", value: "X" })
-        )
-      );
-    }
+        { className: "domoBody" },
+        domo.body
+      ),
+      React.createElement(
+        "form",
+        { id: domo._id,
+          onSubmit: handleDelete,
+          name: "deleteDomo",
+          action: "/deleteDomo",
+          method: "DELETE"
+        },
+        React.createElement("input", { type: "hidden", name: "_id", value: domo._id }),
+        React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf }),
+        React.createElement("input", { className: "makeDomoDelete", type: "submit", value: "X" })
+      )
+    );
   });
 
   return React.createElement(
@@ -337,7 +248,7 @@ var DomoCount = function DomoCount(props) {
   return React.createElement(
     "a",
     { href: "/maker" },
-    "Notes: ",
+    "Posts: ",
     props.domos.length
   );
 };
@@ -406,12 +317,40 @@ var NoteCount = function NoteCount(props) {
         React.createElement(
           "td",
           { className: "tLeft" },
-          "Note Count"
+          "Post Count"
         ),
         React.createElement(
           "td",
           { className: "tRight" },
           props.domos.domos.length
+        )
+      ),
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "td",
+          { className: "tLeft" },
+          "Language"
+        ),
+        React.createElement(
+          "td",
+          { className: "tRight" },
+          "N/A"
+        )
+      ),
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "td",
+          { className: "tLeft" },
+          "Friends Count"
+        ),
+        React.createElement(
+          "td",
+          { className: "tRight" },
+          props.account.accountData.friends.length
         )
       )
     ),

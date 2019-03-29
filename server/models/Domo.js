@@ -32,22 +32,13 @@ const DomoSchema = new mongoose.Schema({
     type: String,
     default: date,
   },
-  duedate: {
-    type: String,
-    default: date,
-  },
-  colour: {
-    type: String,
-  },
 });
 
 DomoSchema.statics.toAPI = (doc) => ({
   title: doc.title,
   body: doc.body,
   _id: doc._id,
-  colour: doc.colour,
   date: doc.date,
-  duedate: doc.duedate,
 });
 
 DomoSchema.statics.findByOwner = (ownerId, callback) => {
@@ -55,7 +46,7 @@ DomoSchema.statics.findByOwner = (ownerId, callback) => {
     owner: convertID(ownerId),
   };
 
-  return DomoModel.find(search).select('title body colour date duedate').exec(callback);
+  return DomoModel.find(search).select('title body date').exec(callback);
 };
 
 DomoSchema.statics.removeByID = (docID, callback) => {

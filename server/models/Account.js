@@ -35,6 +35,11 @@ const AccountSchema = new mongoose.Schema({
   class: {
     type: String,
   },
+  friends: {
+    type: String,
+    value: [],
+    default: [],
+  },
 });
 
 AccountSchema.statics.toAPI = doc => ({
@@ -43,6 +48,7 @@ AccountSchema.statics.toAPI = doc => ({
   createdDate: doc.createdDate,
   _id: doc._id,
   type: doc.type,
+  friends: doc.friends,
 });
 
 const validatePassword = (doc, password, callback) => {

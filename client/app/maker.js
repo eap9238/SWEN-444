@@ -57,28 +57,7 @@ const DomoForm = (props) => {
             <label htmlFor="body">Contents: </label>
             <br/>
             <textarea id="domoBody" name="body" cols="27" wrap="hard" placeholder="Note Contents"/>
-      
-            <br/>
-            <br/>
-            
-            <label for="duedate">Due date (Optional):</label>
-    
-            <br/>
-      
-            <input type="date" id="duedate" name="duedate"/>
 
-            <br/>
-            <br/>
-      
-            <label htmlFor="colour">Colour: </label>
-            <br/>
-            <select id="domoColour" name="colour">
-                <option style={{backgroundColor:'#DF2935'}} value="red">red</option>
-                <option style={{backgroundColor:'#FFE74C'}} value="yellow">yellow</option>
-                <option selected style={{backgroundColor:'#30BCED'}} value="blue">blue</option>
-                <option style={{backgroundColor:'#FFAE03'}} value="orange">orange</option>
-                <option style={{backgroundColor:'#35FF69'}} value="green">green</option>
-            </select>
             <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
       
             <br/>
@@ -108,29 +87,8 @@ const DomoList = function(props) {
   }
 
   const domoNodes = props.domos.map(function(domo) {
-      
-    if (domo.date != domo.duedate) {
         return (
-          <div key={domo._id} className={domo.colour}>
-            <h3 className="domoTitle">{domo.title}</h3>
-            <h4 className="domoDate">Scheduled: <br/> <a href={"https://www.google.com/calendar/render?action=TEMPLATE&text=" + domo.title + "&dates=" + domo.duedate.substring(6,10) + domo.duedate.substring(0,2) + domo.duedate.substring(3,5) + "T224000Z/" + domo.duedate.substring(6,10) + domo.duedate.substring(0,2) + domo.duedate.substring(3,5) + "T221500Z&details=" + domo.body}>{domo.duedate}  </a></h4>
-            <div className="domoBody">{domo.body}</div>
-            <form id={domo._id}
-                  onSubmit={handleDelete}
-                  name="deleteDomo"
-                  action="/deleteDomo"
-                  method="DELETE"
-            >            
-                <input type="hidden" name="_id" value={domo._id}/>
-                <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
-                <input className="makeDomoDelete" type="submit" value="X"/>
-            </form>
-          </div>
-        );
-    }
-    else {
-        return (
-          <div key={domo._id} className={domo.colour}>
+          <div key={domo._id} className="blue">
             <h3 className="domoTitle">{domo.title}</h3>
             <h4 className="domoDate">Created: <br/> {domo.date}  </h4>
             <div className="domoBody">{domo.body}</div>
@@ -146,7 +104,6 @@ const DomoList = function(props) {
             </form>
           </div>
         );
-      }
   });
 
   return (
@@ -255,7 +212,7 @@ const createMyAccount = (csrf) => {
 
 const DomoCount = function(props) {
     return (
-        <a href="/maker">Notes: {props.domos.length}</a>
+        <a href="/maker">Posts: {props.domos.length}</a>
     );
 };
 
@@ -282,8 +239,16 @@ const NoteCount = function(props) {
                     <td className="tRight">{props.account.accountData.createdDate.substring(0, 10)}</td> 
                 </tr>
                 <tr>
-                    <td className="tLeft">Note Count</td>
+                    <td className="tLeft">Post Count</td>
                     <td className="tRight">{props.domos.domos.length}</td> 
+                </tr>
+                <tr>
+                    <td className="tLeft">Language</td>
+                    <td className="tRight">N/A</td> 
+                </tr>
+                <tr>
+                    <td className="tLeft">Friends Count</td>
+                    <td className="tRight">{props.account.accountData.friends.length}</td> 
                 </tr>
             </table>
             <button className="tBtn" disabled>Upgrade Account</button>

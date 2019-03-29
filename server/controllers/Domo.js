@@ -15,7 +15,7 @@ const makerPage = (req, res) => {
 
 // create domo
 const makeDomo = (req, res) => {
-  if (!req.body.title || !req.body.body || !req.body.colour) {
+  if (!req.body.title || !req.body.body) {
     return res.status(400).json({ error: 'Please fill out all fields' });
   }
 
@@ -31,19 +31,7 @@ const makeDomo = (req, res) => {
     title: req.body.title,
     body: req.body.body,
     owner: req.session.account._id,
-    colour: req.body.colour,
   };
-
-  if (req.body.duedate) {
-    domoData.duedate = `${req.body.duedate.substring(5, 7)}`;
-    domoData.duedate += `/${req.body.duedate.substring(8, 10)}`;
-    domoData.duedate += `/${req.body.duedate.substring(0, 4)}`;
-      // domoData.duedate = req.body.duedate;
-  }
-
-
-  // console.dir(domoData.colour);
-  // console.dir(req.body.colour);
 
   const newDomo = new Domo.DomoModel(domoData);
 
@@ -77,6 +65,20 @@ const getDomos = (request, response) => {
 
     return res.json({ domos: docs });
   });
+    
+/*
+    
+  reg.friends_id.forEach(function(element) {
+    return Domo.DomoModel.findByOwner(element, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
+
+    return res.json({ domos: docs });
+    });
+  })
+*/
 };
 
 // delete the g-d-nm domo
