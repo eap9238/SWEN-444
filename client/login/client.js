@@ -102,6 +102,12 @@ const SignupWindow = (props) => {
             <input id="inputPassword" name='inputPassword' type="password" className="form-control" required placeholder="Password"/>
             <label htmlFor='inputPassword2' className="sr-only">Password</label>
             <input id='inputPassword2' name='inputPassword2' type='password'  className="form-control" required placeholder='retype password'/>
+            <label htmlFor='language' className="sr-only">Language</label>
+            <select id='language' name="language"className="form-control">
+                <option value="English">English</option>
+                <option value="English">Español</option>
+                <option value="English">Français</option>
+            </select>
 
             <input type='hidden' name='_csrf' value={props.csrf} />
       
@@ -113,6 +119,7 @@ const SignupWindow = (props) => {
   );
 };
 
+
 // createLoginWindow()
 const createLoginWindow = (csrf) => {
   console.log('Create Login Window');
@@ -121,6 +128,8 @@ const createLoginWindow = (csrf) => {
     document.querySelector('#content')
   );
 };
+
+
 
 // createSignupWindow()
 const createSignupWindow = (csrf) => {
@@ -168,7 +177,9 @@ const getToken = () => {
   });
 };
 
+
 // When the page has loaded...
 $(document).ready(function() {
   getToken();
 });
+
