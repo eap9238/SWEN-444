@@ -34,7 +34,8 @@ const AccountSchema = new mongoose.Schema({
   },
   language: {
     type: String,
-    default: "English"
+    default: "English",
+    required: true,
   },
   class: {
     type: String,
