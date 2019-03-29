@@ -55,7 +55,7 @@ const makeDomo = (req, res) => {
 const getDomos = (request, response) => {
   const req = request;
   const res = response;
-
+    
     // Actually getting the Domos
   return Domo.DomoModel.findByOwner(req.session.account._id, (err, docs) => {
     if (err) {
@@ -65,20 +65,6 @@ const getDomos = (request, response) => {
 
     return res.json({ domos: docs });
   });
-    
-/*
-    
-  reg.friends_id.forEach(function(element) {
-    return Domo.DomoModel.findByOwner(element, (err, docs) => {
-    if (err) {
-      console.log(err);
-      return res.status(400).json({ error: 'An error occured' });
-    }
-
-    return res.json({ domos: docs });
-    });
-  })
-*/
 };
 
 // delete the g-d-nm domo
