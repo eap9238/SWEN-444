@@ -73,7 +73,7 @@ var DomoForm = function DomoForm(props) {
       React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf }),
       React.createElement("br", null),
       React.createElement("br", null),
-      React.createElement("input", { className: "makeDomoSubmit", type: "submit", value: "Make Domo" }),
+      React.createElement("input", { className: "makeDomoSubmit", type: "submit", value: "Post" }),
       React.createElement("input", { className: "makeDomoSubmit", onClick: hideModal, type: "button", value: "Exit" })
     )
   );
@@ -336,7 +336,7 @@ var NoteCount = function NoteCount(props) {
         React.createElement(
           "td",
           { className: "tRight" },
-          "N/A"
+          props.account.accountData.language
         )
       ),
       React.createElement(

@@ -63,7 +63,7 @@ const DomoForm = (props) => {
             <br/>
             <br/>
       
-            <input className="makeDomoSubmit" type="submit" value="Make Domo"/>
+            <input className="makeDomoSubmit" type="submit" value="Post"/>
             <input className="makeDomoSubmit" onClick={hideModal} type="button" value="Exit"/>
         </div>
     </form>
@@ -244,7 +244,7 @@ const NoteCount = function(props) {
                 </tr>
                 <tr>
                     <td className="tLeft">Language</td>
-                    <td className="tRight">N/A</td> 
+                    <td className="tRight">{props.account.accountData.language}</td> 
                 </tr>
                 <tr>
                     <td className="tLeft">Friends Count</td>
