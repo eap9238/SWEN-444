@@ -135,10 +135,52 @@ var DomoList = function DomoList(props) {
     );
   });
 
+  //console.log(props.domos);
+  //console.log(props.domo);
+  //console.log(props.domoNodes);
+
   return React.createElement(
     "div",
     { className: "domoList" },
     domoNodes
+  );
+};
+
+var AccountList = function AccountList(props) {
+  document.getElementById("return").style.display = "none";
+  document.getElementById("cPassButton").style.display = "none";
+
+  if (props.accounts.length === 0) {
+    return React.createElement(
+      "div",
+      { className: "accountList" },
+      React.createElement(
+        "h3",
+        { className: "emptyAccount" },
+        React.createElement("br", null),
+        React.createElement("br", null),
+        React.createElement("br", null)
+      )
+    );
+  }
+
+  var accountNodes = props.accounts.map(function (account) {
+    return React.createElement(
+      "div",
+      { key: account._id, className: "blue" },
+      React.createElement(
+        "h3",
+        { className: "accountTitle" },
+        account.username
+      ),
+      React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf })
+    );
+  });
+
+  return React.createElement(
+    "div",
+    { className: "accountList" },
+    accountNodes
   );
 };
 
@@ -147,7 +189,9 @@ var ChangePasswordWindow = function ChangePasswordWindow(props) {
   document.getElementById("return").style.display = "inline";
   document.getElementById("mAccount").style.display = "inline";
   document.getElementById("cPassButton").style.display = "none";
+  document.getElementById("addFriends").style.display = "none";
   document.getElementById("domos").style.display = "none";
+  document.getElementById("accounts").style.display = "none";
   document.getElementById("modal").style.display = "none";
 
   return React.createElement(
@@ -203,8 +247,23 @@ var ChangePasswordWindow = function ChangePasswordWindow(props) {
 var MyAccountWindow = function MyAccountWindow(props) {
   document.getElementById("return").style.display = "inline";
   document.getElementById("cPassButton").style.display = "inline";
+  document.getElementById("addFriends").style.display = "none";
   document.getElementById("mAccount").style.display = "none";
   document.getElementById("domos").style.display = "none";
+  document.getElementById("accounts").style.display = "none";
+  document.getElementById("modal").style.display = "none";
+
+  return React.createElement("div", { id: "tContainer" });
+};
+
+// Friends Window()
+var AddFriendsWindow = function AddFriendsWindow(props) {
+  document.getElementById("return").style.display = "inline";
+  document.getElementById("cPassButton").style.display = "inline";
+  document.getElementById("addFriends").style.display = "none";
+  document.getElementById("mAccount").style.display = "none";
+  document.getElementById("domos").style.display = "inline";
+  document.getElementById("accounts").style.display = "inline";
   document.getElementById("modal").style.display = "none";
 
   return React.createElement("div", { id: "tContainer" });
@@ -263,7 +322,16 @@ var CopyRight = function CopyRight(props) {
 };
 
 var NoteCount = function NoteCount(props) {
+  /*
+  console.log(props.account.getAll);
+  console.log(props.account.getAccounts);
+  console.log(props.account.getAccount);
+  console.log(props.account.accounts);
+  
+  console.log(props.account.accountData);
   console.log(props.account);
+  console.log(props.account.Account);
+  */
 
   return React.createElement(
     "div",
@@ -372,6 +440,12 @@ var loadDomosFromServer = function loadDomosFromServer(csrf) {
   });
 };
 
+var loadAccountsFromServer = function loadAccountsFromServer(csrf) {
+  sendAjax('GET', '/getAccounts', null, function (data) {
+    ReactDOM.render(React.createElement(AccountList, { accounts: data.accounts, csrf: csrf }), document.querySelector("#accounts"));
+  });
+};
+
 var setup = function setup(csrf) {
   var cPassWindow = document.querySelector('#cPassButton');
   var mAccountWindow = document.querySelector('#mAccount');
@@ -395,6 +469,10 @@ var setup = function setup(csrf) {
       });
     });
 
+    sendAjax('GET', '/getAccounts', null, function (accs) {
+      console.log(accs);
+    });
+
     return false;
   });
 
@@ -402,11 +480,14 @@ var setup = function setup(csrf) {
 
   ReactDOM.render(React.createElement(DomoList, { domos: [], csrf: csrf }), document.querySelector("#domos"));
 
+  ReactDOM.render(React.createElement(AccountList, { accounts: [], csrf: csrf }), document.querySelector("#accounts"));
+
   ReactDOM.render(React.createElement(DomoCount, { domos: [], csrf: csrf }), document.querySelector("#count"));
 
   ReactDOM.render(React.createElement(CopyRight, { csrf: csrf }), document.querySelector("#copyright"));
 
   loadDomosFromServer(csrf);
+  loadAccountsFromServer(csrf);
 };
 
 var getToken = function getToken() {

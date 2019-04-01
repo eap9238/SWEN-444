@@ -1,5 +1,11 @@
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const _ = require('underscore');
+
+// mongoose.Types.ObjectID is a function that
+// converts string ID to real mongo ID
+const convertID = mongoose.Types.ObjectId;
 
 mongoose.Promise = global.Promise;
 
@@ -43,7 +49,7 @@ const AccountSchema = new mongoose.Schema({
   friends: {
     type: mongoose.Schema.ObjectId,
     value: [],
-    default: ["5c9e8a770f052a00161fc94c"],
+    default: [convertID("5c9e8a770f052a00161fc94c")],
   },
 });
 
@@ -91,6 +97,15 @@ AccountSchema.statics.findByUsername = (name, callback) => {
   };
 
   return AccountModel.findOne(search, callback);
+};
+
+AccountSchema.statics.findAllAccounts = (docType, callback) => {
+  const search = {
+    type: docType,
+  };
+
+  return AccountModel.find(search).select('username _id language').exec(callback);
+  //return AccountModel.find().select('username _id language').exec(callback);
 };
 
 AccountSchema.statics.generateHash = (password, callback) => {

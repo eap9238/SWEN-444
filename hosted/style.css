@@ -178,6 +178,10 @@ nav:nth-child(1) {
     margin-left: 10px;
 }
 
+#accounts {
+    display: none;
+}
+
 .domoForm label {
     display: inline-block;
     width: 160px;

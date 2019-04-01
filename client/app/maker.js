@@ -106,9 +106,45 @@ const DomoList = function(props) {
         );
   });
 
+    //console.log(props.domos);
+    //console.log(props.domo);
+    //console.log(props.domoNodes);
+    
   return (
     <div className="domoList">
       {domoNodes}
+    </div>
+  );
+};
+
+const AccountList = function(props) { 
+  document.getElementById("return").style.display = "none";
+  document.getElementById("cPassButton").style.display = "none";
+    
+  if(props.accounts.length === 0) {
+    return (
+      <div className="accountList">
+        <h3 className="emptyAccount">
+        <br/>
+        <br/>
+        <br/>
+        </h3>
+      </div>
+    );
+  }
+
+  const accountNodes = props.accounts.map(function(account) {
+        return (
+          <div key={account._id} className="blue">
+            <h3 className="accountTitle">{account.username}</h3>
+            <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+          </div>
+        );
+  });
+    
+  return (
+    <div className="accountList">
+      {accountNodes}
     </div>
   );
 };
@@ -118,7 +154,9 @@ const ChangePasswordWindow = (props) => {
   document.getElementById("return").style.display = "inline";
   document.getElementById("mAccount").style.display = "inline";
   document.getElementById("cPassButton").style.display = "none";
+  document.getElementById("addFriends").style.display = "none";
   document.getElementById("domos").style.display = "none";
+  document.getElementById("accounts").style.display = "none";
   document.getElementById("modal").style.display = "none";
     
   return (
@@ -160,8 +198,10 @@ const ChangePasswordWindow = (props) => {
 const MyAccountWindow = (props) => {
   document.getElementById("return").style.display = "inline";
   document.getElementById("cPassButton").style.display = "inline";
+  document.getElementById("addFriends").style.display = "none";
   document.getElementById("mAccount").style.display = "none";
   document.getElementById("domos").style.display = "none";
+  document.getElementById("accounts").style.display = "none";
   document.getElementById("modal").style.display = "none";
     
   return (
@@ -223,8 +263,17 @@ const CopyRight = function(props) {
 };
 
 const NoteCount = function(props) {
-	console.log(props.account);
-	
+    /*
+	console.log(props.account.getAll);
+	console.log(props.account.getAccounts);
+	console.log(props.account.getAccount);
+	console.log(props.account.accounts);
+    
+    console.log(props.account.accountData);
+    console.log(props.account);
+    console.log(props.account.Account);
+	*/
+    
     return (
         <div className="fullsize">
             <table>
@@ -270,6 +319,14 @@ const loadDomosFromServer = (csrf) => {
   });
 };
 
+const loadAccountsFromServer = (csrf) => {
+  sendAjax('GET', '/getAccounts', null, (data) => {
+    ReactDOM.render(
+      <AccountList accounts={data.accounts} csrf={csrf}/>, document.querySelector("#accounts")
+    );
+  });
+};
+
 const setup = function(csrf) {
   const cPassWindow = document.querySelector('#cPassButton');
   const mAccountWindow = document.querySelector('#mAccount');
@@ -294,6 +351,10 @@ const setup = function(csrf) {
             );
         });
     });
+    
+    sendAjax('GET', '/getAccounts', null, (accs) => {
+        console.log(accs);
+    });
       
     return false;
   });
@@ -307,6 +368,10 @@ const setup = function(csrf) {
   );
 
   ReactDOM.render(
+    <AccountList accounts={[]} csrf={csrf}/>, document.querySelector("#accounts")
+  );
+
+  ReactDOM.render(
     <DomoCount domos={[]} csrf={csrf}/>, document.querySelector("#count")
   );
 
@@ -315,6 +380,7 @@ const setup = function(csrf) {
   );
 
   loadDomosFromServer(csrf);
+  loadAccountsFromServer(csrf);
 };
 
 const getToken = () => {

@@ -2,6 +2,17 @@ const models = require('../models');
 
 const Account = models.Account;
 
+const makerPage = (req, res) => {
+  Account.AccountModel.findAllAccounts(req.session.account._type, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
+
+    return res.render('app', { csrfToken: req.csrfToken(), account: docs });
+  });
+};
+
 const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
@@ -148,6 +159,22 @@ const getAccount = (request, response) => {
   res.json(accountData);
 };
 
+// get all accounts()
+const getAccounts = (request, response) => {
+  const req = request;
+  const res = response;
+    
+    // Actually getting the Accounts
+  return Account.AccountModel.findAllAccounts(req.session.account.type, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
+
+    return res.json({ accounts: docs });
+  });
+};
+
 const getToken = (request, response) => {
   const req = request;
   const res = response;
@@ -159,11 +186,13 @@ const getToken = (request, response) => {
   res.json(csrfJSON);
 };
 
+module.exports.makerPage = makerPage;
 module.exports.loginPage = loginPage;
 module.exports.fourofour = fourofourPage;
 module.exports.login = login;
 module.exports.logout = logout;
 module.exports.changePassword = changeup;
 module.exports.getAccount = getAccount;
+module.exports.getAccounts = getAccounts;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
