@@ -223,7 +223,7 @@ const CopyRight = function(props) {
 };
 
 const NoteCount = function(props) {
-	console.log(account);
+	console.log(props.account);
 	
     return (
         <div className="fullsize">

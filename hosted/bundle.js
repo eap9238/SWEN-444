@@ -263,7 +263,7 @@ var CopyRight = function CopyRight(props) {
 };
 
 var NoteCount = function NoteCount(props) {
-  console.log(account);
+  console.log(props.account);
 
   return React.createElement(
     "div",
