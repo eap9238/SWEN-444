@@ -43,6 +43,16 @@ var handleDelete = function handleDelete(e) {
   });
 };
 
+var handleId = function handleId(e) {
+  e.preventDefault();
+
+  $("#domoMessage").animate({ width: 'hide' }, 350);
+
+  sendAjax('LOAD', $("#" + e.target.id).attr("action"), $("#" + e.target.id).serialize(), function () {
+    loadDomosFromServer($("token").val());
+  });
+};
+
 var DomoForm = function DomoForm(props) {
   document.getElementById("modal").onclick = function () {
     document.getElementById("domoForm").style.display = "block";
@@ -147,8 +157,8 @@ var DomoList = function DomoList(props) {
 };
 
 var AccountList = function AccountList(props) {
-  document.getElementById("return").style.display = "none";
-  document.getElementById("cPassButton").style.display = "none";
+  //document.getElementById("return").style.display = "none";
+  //document.getElementById("cPassButton").style.display = "none";
 
   if (props.accounts.length === 0) {
     return React.createElement(
@@ -173,6 +183,7 @@ var AccountList = function AccountList(props) {
         { className: "accountTitle" },
         account.username
       ),
+      React.createElement("input", { type: "hidden", name: "_id", id: "_id", value: account._id }),
       React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf })
     );
   });
@@ -189,9 +200,8 @@ var ChangePasswordWindow = function ChangePasswordWindow(props) {
   document.getElementById("return").style.display = "inline";
   document.getElementById("mAccount").style.display = "inline";
   document.getElementById("cPassButton").style.display = "none";
-  document.getElementById("addFriends").style.display = "none";
+  document.getElementById("addFriends").style.display = "inline";
   document.getElementById("domos").style.display = "none";
-  document.getElementById("accounts").style.display = "none";
   document.getElementById("modal").style.display = "none";
 
   return React.createElement(
@@ -247,23 +257,9 @@ var ChangePasswordWindow = function ChangePasswordWindow(props) {
 var MyAccountWindow = function MyAccountWindow(props) {
   document.getElementById("return").style.display = "inline";
   document.getElementById("cPassButton").style.display = "inline";
-  document.getElementById("addFriends").style.display = "none";
+  document.getElementById("addFriends").style.display = "inline";
   document.getElementById("mAccount").style.display = "none";
   document.getElementById("domos").style.display = "none";
-  document.getElementById("accounts").style.display = "none";
-  document.getElementById("modal").style.display = "none";
-
-  return React.createElement("div", { id: "tContainer" });
-};
-
-// Friends Window()
-var AddFriendsWindow = function AddFriendsWindow(props) {
-  document.getElementById("return").style.display = "inline";
-  document.getElementById("cPassButton").style.display = "inline";
-  document.getElementById("addFriends").style.display = "none";
-  document.getElementById("mAccount").style.display = "none";
-  document.getElementById("domos").style.display = "inline";
-  document.getElementById("accounts").style.display = "inline";
   document.getElementById("modal").style.display = "none";
 
   return React.createElement("div", { id: "tContainer" });
@@ -293,6 +289,17 @@ var handleCPass = function handleCPass(e) {
   return false;
 };
 
+//add a name to friends list
+var changeFList = function changeFList(e) {
+  // Preventing default redirect behavior + hiding the Domo error
+  e.preventDefault();
+  $('#domoMessage').animate({ width: 'hide' }, 350);
+
+  sendAjax('POST', $('#fListForm').attr('action'), $('#fListForm').serialize(), redirect);
+
+  return false;
+};
+
 // createChangePasswordWindow()
 var createCPassWindow = function createCPassWindow(csrf) {
   ReactDOM.render(React.createElement(ChangePasswordWindow, { csrf: csrf }), document.querySelector('#content'));
@@ -301,6 +308,20 @@ var createCPassWindow = function createCPassWindow(csrf) {
 // createMyAccountWindow()
 var createMyAccount = function createMyAccount(csrf) {
   ReactDOM.render(React.createElement(MyAccountWindow, { csrf: csrf }), document.querySelector('#content'));
+};
+
+// createFriendsPage()
+var createFriendsPage = function createFriendsPage(csrf) {
+  document.getElementById("cPassButton").style.display = "inline";
+  document.getElementById("addFriends").style.display = "none";
+  document.getElementById("mAccount").style.display = "inline";
+  document.getElementById("return").style.display = "inline";
+  document.getElementById("domos").style.display = "none";
+  document.getElementById("modal").style.display = "none";
+
+  ReactDOM.render(React.createElement(AccountList, { accounts: [], csrf: csrf }), document.querySelector("#content"));
+
+  //loadAccountsFromServer(csrf);
 };
 
 var DomoCount = function DomoCount(props) {
@@ -442,13 +463,14 @@ var loadDomosFromServer = function loadDomosFromServer(csrf) {
 
 var loadAccountsFromServer = function loadAccountsFromServer(csrf) {
   sendAjax('GET', '/getAccounts', null, function (data) {
-    ReactDOM.render(React.createElement(AccountList, { accounts: data.accounts, csrf: csrf }), document.querySelector("#accounts"));
+    ReactDOM.render(React.createElement(AccountList, { accounts: data.accounts, csrf: csrf }), document.querySelector("#content"));
   });
 };
 
 var setup = function setup(csrf) {
   var cPassWindow = document.querySelector('#cPassButton');
   var mAccountWindow = document.querySelector('#mAccount');
+  var aFriendsWindow = document.querySelector('#addFriends');
 
   cPassWindow.addEventListener('click', function (e) {
     e.preventDefault();
@@ -476,18 +498,27 @@ var setup = function setup(csrf) {
     return false;
   });
 
+  aFriendsWindow.addEventListener('click', function (e) {
+    e.preventDefault();
+    createFriendsPage(csrf);
+
+    sendAjax('GET', '/getAccounts', null, function (data) {
+      ReactDOM.render(React.createElement(AccountList, { accounts: data.accounts, csrf: csrf }), document.querySelector("#content"));
+    });
+
+    return false;
+  });
+
   ReactDOM.render(React.createElement(DomoForm, { csrf: csrf }), document.querySelector("#makeDomo"));
 
   ReactDOM.render(React.createElement(DomoList, { domos: [], csrf: csrf }), document.querySelector("#domos"));
-
-  ReactDOM.render(React.createElement(AccountList, { accounts: [], csrf: csrf }), document.querySelector("#accounts"));
 
   ReactDOM.render(React.createElement(DomoCount, { domos: [], csrf: csrf }), document.querySelector("#count"));
 
   ReactDOM.render(React.createElement(CopyRight, { csrf: csrf }), document.querySelector("#copyright"));
 
   loadDomosFromServer(csrf);
-  loadAccountsFromServer(csrf);
+  //loadAccountsFromServer(csrf);
 };
 
 var getToken = function getToken() {

@@ -146,6 +146,31 @@ const changeup = (request, response) => {
   return res;
 };
 
+/*
+// setFList()
+const changeFList = (request, response) => {
+  const req = request;
+  const res = response;
+  req.body._id = `${req.body._id}`;
+  req.body._oppid = `${req.body._oppid}`;
+    
+  // Actually getting the account
+  return Account.AccountModel.findById(req.body.oppid, req.body._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
+
+    res.json({ redirect: '/maker' });
+
+    res.statusMessage = 'Friend Added';
+    return res;
+  });
+
+  return res;
+};
+*/
+
 const getAccount = (request, response) => {
   const req = request;
   const res = response;
@@ -175,6 +200,22 @@ const getAccounts = (request, response) => {
   });
 };
 
+// getDomos()
+const getAccountData = (request, response) => {
+  const req = request;
+  const res = response;
+    
+    // Actually getting the account
+  return Account.AccountModel.findById(_id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
+
+    return res.json({ account: docs });
+  });
+};
+
 const getToken = (request, response) => {
   const req = request;
   const res = response;
@@ -191,8 +232,10 @@ module.exports.loginPage = loginPage;
 module.exports.fourofour = fourofourPage;
 module.exports.login = login;
 module.exports.logout = logout;
+//module.exports.changeFList = changeFList;
 module.exports.changePassword = changeup;
 module.exports.getAccount = getAccount;
 module.exports.getAccounts = getAccounts;
+module.exports.getAccountData = getAccountData;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
