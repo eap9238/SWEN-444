@@ -263,6 +263,8 @@ var CopyRight = function CopyRight(props) {
 };
 
 var NoteCount = function NoteCount(props) {
+  console.log(account);
+
   return React.createElement(
     "div",
     { className: "fullsize" },

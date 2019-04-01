@@ -223,6 +223,8 @@ const CopyRight = function(props) {
 };
 
 const NoteCount = function(props) {
+	console.log(account);
+	
     return (
         <div className="fullsize">
             <table>
