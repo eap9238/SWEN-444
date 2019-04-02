@@ -14,20 +14,25 @@
 </head>
 <body>
   <nav>
-    <div class="navlink"><a href="/logout">Log out</a></div>
+    <div class="navlink" id="return"><a href="/maker">OurSpace</a></div>
     <div id="mAccount" class="navlink"><a href="/myAccount">My Account</a></div>
     <div id="cPassButton" class="navlink"><a href="/changePassword">Change Password</a></div>
-    <div id="addFriends" class="navlink"><a href="/addFriends">Add Friends</a></div>
-    <div class="navlink" id="modal"><a href="#">New Post</a></div>
-    <div class="navlink" id="return"><a href="/maker">Post List</a></div>
-    <div class="navstud" id="count"><a href="#">#</a></div>
+    <!-- <div class="navstud" id="count"><a href="#">#</a></div> -->
+    <div class="navlink" id="logout"><a href="/logout">Log out</a></div>
   </nav>
-  <section id="content"></section>
+  <section id="content">
+  </section>
   <section id="modalManager"> 
   </section>
   <section id="makeDomo">
   </section>
+  <section id="friends">
+    <div id="friendList"></div>
+    <div id="addFriends" class="navlink"><a href="/addFriends">Add Friends</a></div>
+  </section>
   <section id="domos">
+    <div id="domoList"></div>
+    <div id="modal"><a href="#">+</a></div>
   </section>
   <div id="copyright"></div>
   <div id="domoMessage"><img id="speech" src="/assets/img/speech.png" alt="speech box"/>

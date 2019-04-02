@@ -47,9 +47,9 @@ const AccountSchema = new mongoose.Schema({
     type: String,
   },
   friends: {
-    type: mongoose.Schema.ObjectId,
+    type: [String],
     value: [],
-    default: [convertID("5c9e8a770f052a00161fc94c")],
+    default: ["5ca39190295f8a2e884cc1eb", "5ca39158295f8a2e884cc1ea"],
   },
 });
 

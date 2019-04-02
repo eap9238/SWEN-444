@@ -81,7 +81,6 @@ const DomoForm = (props) => {
 };
 
 const DomoList = function(props) { 
-  document.getElementById("return").style.display = "none";
   document.getElementById("cPassButton").style.display = "none";
     
   if(props.domos.length === 0) {
@@ -128,8 +127,6 @@ const DomoList = function(props) {
 };
 
 const AccountList = function(props) { 
-  //document.getElementById("return").style.display = "none";
-  //document.getElementById("cPassButton").style.display = "none";
     
   if(props.accounts.length === 0) {
     return (
@@ -162,10 +159,10 @@ const AccountList = function(props) {
 
 // CPassWindow()
 const ChangePasswordWindow = (props) => {
-  document.getElementById("return").style.display = "inline";
-  document.getElementById("mAccount").style.display = "inline";
+  document.getElementById("mAccount").style.display = "block";
   document.getElementById("cPassButton").style.display = "none";
-  document.getElementById("addFriends").style.display = "inline";
+  document.getElementById("friends").style.display = "none";
+  document.getElementById("content").style.display = "block";
   document.getElementById("domos").style.display = "none";
   document.getElementById("modal").style.display = "none";
     
@@ -206,10 +203,10 @@ const ChangePasswordWindow = (props) => {
 
 // My Account Window()
 const MyAccountWindow = (props) => {
-  document.getElementById("return").style.display = "inline";
-  document.getElementById("cPassButton").style.display = "inline";
-  document.getElementById("addFriends").style.display = "inline";
+  document.getElementById("cPassButton").style.display = "block";
   document.getElementById("mAccount").style.display = "none";
+  document.getElementById("content").style.display = "block";
+  document.getElementById("friends").style.display = "none";
   document.getElementById("domos").style.display = "none";
   document.getElementById("modal").style.display = "none";
     
@@ -272,16 +269,16 @@ const createMyAccount = (csrf) => {
 
 // createFriendsPage()
 const createFriendsPage = (csrf) => {
-  document.getElementById("cPassButton").style.display = "inline";
-  document.getElementById("addFriends").style.display = "none";
-  document.getElementById("mAccount").style.display = "inline";
-  document.getElementById("return").style.display = "inline";
-  document.getElementById("domos").style.display = "none";
+  document.getElementById("cPassButton").style.display = "none";
+  document.getElementById("mAccount").style.display = "block";
+  document.getElementById("content").style.display = "none";
+  document.getElementById("friends").style.display = "block";    
+  document.getElementById("domos").style.display = "block";
   document.getElementById("modal").style.display = "none";
     
   ReactDOM.render(
     <AccountList accounts={[]} csrf={csrf}/>, 
-    document.querySelector("#content")
+    document.querySelector("#domoList")
   );
     
   //loadAccountsFromServer(csrf);
@@ -347,11 +344,7 @@ const NoteCount = function(props) {
 const loadDomosFromServer = (csrf) => {
   sendAjax('GET', '/getDomos', null, (data) => {
     ReactDOM.render(
-      <DomoList domos={data.domos} csrf={csrf}/>, document.querySelector("#domos")
-    );
-
-    ReactDOM.render(
-      <DomoCount domos={data.domos} csrf={csrf}/>, document.querySelector("#count")
+      <DomoList domos={data.domos} csrf={csrf}/>, document.querySelector("#domoList")
     );
   });
 };
@@ -359,7 +352,7 @@ const loadDomosFromServer = (csrf) => {
 const loadAccountsFromServer = (csrf) => {
   sendAjax('GET', '/getAccounts', null, (data) => {
     ReactDOM.render(
-      <AccountList accounts={data.accounts} csrf={csrf}/>, document.querySelector("#content")
+      <AccountList accounts={data.accounts} csrf={csrf}/>, document.querySelector("#domoList")
     );
   });
 };
@@ -403,7 +396,7 @@ const setup = function(csrf) {
     
   sendAjax('GET', '/getAccounts', null, (data) => {
     ReactDOM.render(
-      <AccountList accounts={data.accounts} csrf={csrf}/>, document.querySelector("#content")
+      <AccountList accounts={data.accounts} csrf={csrf}/>, document.querySelector("#domoList")
     );
   });
       
@@ -415,11 +408,7 @@ const setup = function(csrf) {
   );
 
   ReactDOM.render(
-    <DomoList domos={[]} csrf={csrf}/>, document.querySelector("#domos")
-  );
-
-  ReactDOM.render(
-    <DomoCount domos={[]} csrf={csrf}/>, document.querySelector("#count")
+    <DomoList domos={[]} csrf={csrf}/>, document.querySelector("#domoList")
   );
 
   ReactDOM.render(
