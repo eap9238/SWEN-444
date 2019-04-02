@@ -230,7 +230,7 @@ const getToken = (request, response) => {
 
   res.json(csrfJSON);
 };
-
+module.exports.homePage = homePage;
 module.exports.makerPage = makerPage;
 module.exports.loginPage = loginPage;
 module.exports.fourofour = fourofourPage;
