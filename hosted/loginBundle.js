@@ -90,6 +90,40 @@ var LoginWindow = function LoginWindow(props) {
   );
 };
 
+var HomeWindow = function HomeWindow(props) {
+  return React.createElement(
+      'div',
+      { className: 'text-center', id: 'bodyContainer'},
+      React.createElement(
+          'h1',
+          { className: 'h3 mb-3 font-weight-normal' },
+          'Select an option'
+      ),
+      React.createElement(
+        'form',
+          { className: 'form-signin mainForm',
+          id: 'loginForm',
+          name: 'loginForm',
+          action: '/login',
+          method: 'GET'}
+      ),
+      React.createElement('br', null),
+      React.createElement(
+          'h2',
+          { className: 'h3 mb-3 font-weight-normal' },
+          'Select a username and password'
+      ),
+      React.createElement(
+          'form',
+          { className: 'form-signin mainForm',
+              id: 'signupForm',
+              name: 'signupForm',
+              action: '/signup',
+              method: 'GET'}
+      ),
+  )
+};
+
 // SignupWindow()
 var SignupWindow = function SignupWindow(props) {
   return React.createElement(
@@ -176,6 +210,10 @@ var createSignupWindow = function createSignupWindow(csrf) {
   ReactDOM.render(React.createElement(SignupWindow, { csrf: csrf }), document.querySelector('#content'));
 };
 
+var createHomeWindow = function createHomeWindow(csrf) {
+    console.log('Create Home Window');
+    ReactDOM.render(React.createElement(HomeWindow, {csrf: csrf}), document.querySelector('#content'));
+};
 var CopyRight = function CopyRight(props) {
   return React.createElement(
     'div',

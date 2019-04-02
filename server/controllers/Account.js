@@ -13,6 +13,10 @@ const makerPage = (req, res) => {
   });
 };
 
+const homePage = (req,res) => {
+  res.render('home', {csrfToken: req.csrfToken() })
+};
+
 const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
@@ -226,7 +230,7 @@ const getToken = (request, response) => {
 
   res.json(csrfJSON);
 };
-
+module.exports.homePage = homePage;
 module.exports.makerPage = makerPage;
 module.exports.loginPage = loginPage;
 module.exports.fourofour = fourofourPage;
