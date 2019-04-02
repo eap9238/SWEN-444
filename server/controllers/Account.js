@@ -13,13 +13,10 @@ const makerPage = (req, res) => {
   });
 };
 
-<<<<<<< HEAD
 const homePage = (req,res) => {
   res.render('homePage', {csrfToken: req.csrfToken() })
 };
 
-=======
->>>>>>> parent of 10c6315... first passthrough of changes to add home page and change some css
 const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };

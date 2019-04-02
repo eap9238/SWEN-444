@@ -83,14 +83,14 @@ var LoginWindow = function LoginWindow(props) {
       React.createElement('br', null),
       React.createElement(
         'button',
-        _defineProperty({ className: 'formSubmitGR btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
+        _defineProperty({ className: 'formSubmit btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
         'Sign in'
       )
     )
   );
 };
 
-<<<<<<< HEAD
+
 var HomeWindow = function HomeWindow(props) {
   return React.createElement(
       'div',
@@ -109,7 +109,7 @@ var HomeWindow = function HomeWindow(props) {
             method: 'GET'},
             React.createElement(
               'button',
-              _defineProperty({ className: 'formSubmitGR btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
+              _defineProperty({ className: 'formSubmit btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
               'Sign in'
           )
       ),
@@ -128,7 +128,7 @@ var HomeWindow = function HomeWindow(props) {
               method: 'GET'},
               React.createElement(
                 'button',
-                _defineProperty({ className: 'formSubmitOJ btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
+                _defineProperty({ className: 'formSubmit btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
                 'Sign Up'
           )
       ),
@@ -137,8 +137,7 @@ var HomeWindow = function HomeWindow(props) {
   )
 };
 
-=======
->>>>>>> parent of 10c6315... first passthrough of changes to add home page and change some css
+
 // SignupWindow()
 var SignupWindow = function SignupWindow(props) {
   return React.createElement(
@@ -207,7 +206,7 @@ var SignupWindow = function SignupWindow(props) {
       React.createElement('br', null),
       React.createElement(
         'button',
-        _defineProperty({ className: 'formSubmitGR btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
+        _defineProperty({ className: 'formSubmit btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
         'Sign Up'
       )
     )
