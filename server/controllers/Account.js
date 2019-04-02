@@ -200,6 +200,40 @@ const getAccounts = (request, response) => {
   });
 };
 
+/*
+// get all friends()
+const getFriends = (request, response) => {
+  const req = request;
+  const res = response;
+    
+    // Actually getting the Accounts
+  return Account.AccountModel.findAllAccounts(req.session.account.type, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
+
+    return res.json({ friends: docs });
+  });
+};
+*/
+
+// get friend accounts()
+const getFriends = (request, response) => {
+  const req = request;
+  const res = response;
+    
+    // Actually getting the Accounts
+  return Account.AccountModel.findFriendAccounts(req.session.account.friends, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
+
+    return res.json({ friends: docs });
+  });
+};
+
 // getDomos()
 const getAccountData = (request, response) => {
   const req = request;
@@ -232,8 +266,8 @@ module.exports.loginPage = loginPage;
 module.exports.fourofour = fourofourPage;
 module.exports.login = login;
 module.exports.logout = logout;
-//module.exports.changeFList = changeFList;
 module.exports.changePassword = changeup;
+module.exports.getFriends = getFriends;
 module.exports.getAccount = getAccount;
 module.exports.getAccounts = getAccounts;
 module.exports.getAccountData = getAccountData;

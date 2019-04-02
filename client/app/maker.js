@@ -157,6 +157,37 @@ const AccountList = function(props) {
   );
 };
 
+const FriendList = function(props) { 
+    
+  if(props.friends.length === 0) {
+    return (
+      <div className="friendList">
+        <h3 className="emptyFriend">
+        <br/>
+        <br/>
+        <br/>
+        </h3>
+      </div>
+    );
+  }
+
+  const friendNodes = props.friends.map(function(friend) {
+        return (
+          <div key={friend._id} className="blue">
+            <h3 className="friendTitle">{friend.username}</h3>
+                <input type='hidden' name='_id' id="_id" value={friend._id} />
+            <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+          </div>
+        );
+  });
+    
+  return (
+    <div className="friendList">
+      {friendNodes}
+    </div>
+  );
+};
+
 // CPassWindow()
 const ChangePasswordWindow = (props) => {
   document.getElementById("mAccount").style.display = "block";
@@ -347,12 +378,28 @@ const loadDomosFromServer = (csrf) => {
       <DomoList domos={data.domos} csrf={csrf}/>, document.querySelector("#domoList")
     );
   });
+    
+    /*
+  sendAjax('GET', '/getFriends', null, (data) => {
+    ReactDOM.render(
+      <FriendList friends={data.friends} csrf={csrf}/>, document.querySelector("#friendList")
+    );
+  });
+  */
 };
 
 const loadAccountsFromServer = (csrf) => {
   sendAjax('GET', '/getAccounts', null, (data) => {
     ReactDOM.render(
       <AccountList accounts={data.accounts} csrf={csrf}/>, document.querySelector("#domoList")
+    );
+  });
+};
+
+const loadFriendsFromServer = (csrf) => {
+  sendAjax('GET', '/getFriends', null, (data) => {
+    ReactDOM.render(
+      <FriendList friends={data.friends} csrf={csrf}/>, document.querySelector("#friendList")
     );
   });
 };
@@ -376,7 +423,6 @@ const setup = function(csrf) {
         console.log(acc);
         
         sendAjax('GET', '/getDomos', null, (data) => {
-            
             ReactDOM.render(
                 <NoteCount domos={data} account={acc} csrf={csrf}/>, document.querySelector("#tContainer")
             );
@@ -410,13 +456,17 @@ const setup = function(csrf) {
   ReactDOM.render(
     <DomoList domos={[]} csrf={csrf}/>, document.querySelector("#domoList")
   );
+            
+  ReactDOM.render(
+    <FriendList friends={[]} csrf={csrf}/>, document.querySelector("#friendList")
+  );
 
   ReactDOM.render(
     <CopyRight csrf={csrf}/>, document.querySelector("#copyright")
   );
 
   loadDomosFromServer(csrf);
-  //loadAccountsFromServer(csrf);
+  loadFriendsFromServer(csrf);
 };
 
 const getToken = () => {

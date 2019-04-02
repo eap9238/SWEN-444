@@ -108,6 +108,14 @@ AccountSchema.statics.findAllAccounts = (docType, callback) => {
   //return AccountModel.find().select('username _id language').exec(callback);
 };
 
+AccountSchema.statics.findFriendAccounts = (docFriends, callback) => {
+  const search = {
+    _id: { $in: docFriends},
+  };
+
+  return AccountModel.find(search).select('username _id language').exec(callback);
+};
+
 AccountSchema.statics.generateHash = (password, callback) => {
   const salt = crypto.randomBytes(saltLength);
 
