@@ -170,11 +170,16 @@ const FriendList = function(props) {
       </div>
     );
   }
-
+	
   const friendNodes = props.friends.map(function(friend) {
+		const loadFriend = (e) => {
+			const {id} = e.target;
+			console.log(id);
+		}
+		
         return (
-          <div key={friend._id} className="blue">
-            <h3 className="friendTitle">{friend.username}</h3>
+          <div id={friend._id} className="blue" onClick={loadFriend}>
+            <h3 id={friend._id} className="friendTitle">{friend.username}</h3>
                 <input type='hidden' name='_id' id="_id" value={friend._id} />
             <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
           </div>

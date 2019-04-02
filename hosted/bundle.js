@@ -209,12 +209,18 @@ var FriendList = function FriendList(props) {
   }
 
   var friendNodes = props.friends.map(function (friend) {
+    var loadFriend = function loadFriend(e) {
+      var id = e.target.id;
+
+      console.log(id);
+    };
+
     return React.createElement(
       "div",
-      { key: friend._id, className: "blue" },
+      { id: friend._id, className: "blue", onClick: loadFriend },
       React.createElement(
         "h3",
-        { className: "friendTitle" },
+        { id: friend._id, className: "friendTitle" },
         friend.username
       ),
       React.createElement("input", { type: "hidden", name: "_id", id: "_id", value: friend._id }),
