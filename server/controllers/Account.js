@@ -30,6 +30,13 @@ const logout = (req, res) => {
   res.redirect('/');
 };
 
+const homePage = (request,response) => {
+  const req = request;
+  const res = response;
+
+  return res.json({ redirect: '/'})
+}
+
 const login = (request, response) => {
   const req = request;
   const res = response;
