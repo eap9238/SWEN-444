@@ -90,6 +90,7 @@ var LoginWindow = function LoginWindow(props) {
   );
 };
 
+<<<<<<< HEAD
 var HomeWindow = function HomeWindow(props) {
   return React.createElement(
       'div',
@@ -136,6 +137,8 @@ var HomeWindow = function HomeWindow(props) {
   )
 };
 
+=======
+>>>>>>> parent of 10c6315... first passthrough of changes to add home page and change some css
 // SignupWindow()
 var SignupWindow = function SignupWindow(props) {
   return React.createElement(
@@ -222,10 +225,6 @@ var createSignupWindow = function createSignupWindow(csrf) {
   ReactDOM.render(React.createElement(SignupWindow, { csrf: csrf }), document.querySelector('#content'));
 };
 
-var createHomeWindow = function createHomeWindow(csrf) {
-    console.log('Create Home Window');
-    ReactDOM.render(React.createElement(HomeWindow, {csrf: csrf}), document.querySelector('#content'));
-};
 var CopyRight = function CopyRight(props) {
   return React.createElement(
     'div',
