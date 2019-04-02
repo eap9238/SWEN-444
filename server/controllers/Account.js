@@ -14,7 +14,7 @@ const makerPage = (req, res) => {
 };
 
 const homePage = (req,res) => {
-  res.render('home', {csrfToken: req.csrfToken() })
+  res.render('homePage', {csrfToken: req.csrfToken() })
 };
 
 const loginPage = (req, res) => {

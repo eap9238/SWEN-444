@@ -49,7 +49,7 @@ var handleSignup = function handleSignup(e) {
 var LoginWindow = function LoginWindow(props) {
   return React.createElement(
     'div',
-    { className: 'text-center', id: 'bodyContainer' },
+    { className: 'text-center', id: 'bodyContainerFullGray' },
     React.createElement(
       'form',
       { className: 'form-signin mainForm',
@@ -83,7 +83,7 @@ var LoginWindow = function LoginWindow(props) {
       React.createElement('br', null),
       React.createElement(
         'button',
-        _defineProperty({ className: 'formSubmit btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
+        _defineProperty({ className: 'formSubmitGR btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
         'Sign in'
       )
     )
@@ -93,7 +93,7 @@ var LoginWindow = function LoginWindow(props) {
 var HomeWindow = function HomeWindow(props) {
   return React.createElement(
       'div',
-      { className: 'text-center', id: 'bodyContainer'},
+      { className: 'text-center', id: 'bodyContainerFullGray'},
       React.createElement(
           'h1',
           { className: 'h3 mb-3 font-weight-normal' },
@@ -102,10 +102,15 @@ var HomeWindow = function HomeWindow(props) {
       React.createElement(
         'form',
           { className: 'form-signin mainForm',
-          id: 'loginForm',
-          name: 'loginForm',
-          action: '/login',
-          method: 'GET'}
+            id: 'loginForm',
+            name: 'loginForm',
+            action: '/login',
+            method: 'GET'},
+            React.createElement(
+              'button',
+              _defineProperty({ className: 'formSubmitGR btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
+              'Sign in'
+          )
       ),
       React.createElement('br', null),
       React.createElement(
@@ -119,8 +124,15 @@ var HomeWindow = function HomeWindow(props) {
               id: 'signupForm',
               name: 'signupForm',
               action: '/signup',
-              method: 'GET'}
+              method: 'GET'},
+              React.createElement(
+                'button',
+                _defineProperty({ className: 'formSubmitOJ btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
+                'Sign Up'
+          )
       ),
+      React.createElement('input', { type: 'hidden', name: '_csrf', value: props.csrf }),
+      React.createElement('br', null)
   )
 };
 
@@ -128,7 +140,7 @@ var HomeWindow = function HomeWindow(props) {
 var SignupWindow = function SignupWindow(props) {
   return React.createElement(
     'div',
-    { className: 'text-center', id: 'bodyContainer' },
+    { className: 'text-center', id: 'bodyContainerFullGray' },
     React.createElement(
       'form',
       { className: 'form-signin mainForm',
@@ -192,7 +204,7 @@ var SignupWindow = function SignupWindow(props) {
       React.createElement('br', null),
       React.createElement(
         'button',
-        _defineProperty({ className: 'formSubmit btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
+        _defineProperty({ className: 'formSubmitGR btn btn-lg btn-primary btn-block', type: 'submit' }, 'type', 'submit'),
         'Sign Up'
       )
     )

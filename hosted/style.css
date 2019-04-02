@@ -239,7 +239,52 @@ nav:nth-child(1) {
     background-color: #338acc;
 }
 
-.formSubmit {
+
+.formSubmitOJ {
+    transition: background-color 0.4s ease;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 14px;
+    font-size: 1.2em;
+    width: 100px;
+    background-color: #FC9229;
+    border-radius: 2px;
+    border-color: #DC852D;
+    padding: 3px 0px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.formSubmitOJ:hover {
+    transition: background-color 0.4s ease;
+    background-color: #C4782C;
+}
+
+.formSubmitGR {
+    transition: background-color 0.4s ease;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 14px;
+    font-size: 1.2em;
+    width: 100px;
+    background-color: #79EB56;
+    border-radius: 2px;
+    border-color: #6ED250;
+    padding: 3px 0px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.formSubmitGR:hover {
+    transition: background-color 0.4s ease;
+    background-color: #60B247;
+}
+
+.formSubmitBL {
     transition: background-color 0.4s ease;
     display: block;
     text-align: center;
@@ -255,7 +300,7 @@ nav:nth-child(1) {
     text-decoration: none;
 }
 
-.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
+.formSubmitBL:link, .formSubmitBL:visited, .formSubmitBL:hover, .formSubmitBL:active {
     color: white;
 }
 
@@ -655,6 +700,17 @@ div.domoBody {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+#bodyContainerFullGray {
+    height: calc(100% - (50px));
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #A4A4A4;
 }
 
 .form-signin {
