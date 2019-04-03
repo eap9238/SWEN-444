@@ -176,7 +176,7 @@ const FriendList = function(props) {
 			const {id} = e.target;
 			console.log(id);
 			
-			sendAjax('GET', '/getDomosByOwner', id, (data) => {
+			sendAjax('GET', '/getDomos', id, (data) => {
 				ReactDOM.render(
 				  <DomoList domos={data.domos} csrf={props.csrf}/>, document.querySelector("#domoList")
 				);
@@ -389,14 +389,6 @@ const loadDomosFromServer = (csrf) => {
       <DomoList domos={data.domos} csrf={csrf}/>, document.querySelector("#domoList")
     );
   });
-    
-    /*
-  sendAjax('GET', '/getFriends', null, (data) => {
-    ReactDOM.render(
-      <FriendList friends={data.friends} csrf={csrf}/>, document.querySelector("#friendList")
-    );
-  });
-  */
 };
 
 const loadAccountsFromServer = (csrf) => {
