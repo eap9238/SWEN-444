@@ -39,6 +39,31 @@ const handleDelete = (e) => {
   });
 };
 
+const handleReport = (e) => {
+  e.preventDefault();
+    
+  $("#domoMessage").animate({width:'hide'}, 350);
+    
+  //MARK PUT CODE TO ACTIVATE ON REPORT HERE
+  //DATA CAN BE FETCHED FROM SOURCE USING {e.target}
+	
+  console.log("Post Reported");
+};
+
+const handleFriend = (e) => {
+  e.preventDefault();
+    
+  $("#domoMessage").animate({width:'hide'}, 350);
+    
+  console.log(e.target.id);
+	
+  sendAjax('GET', $("#" + e.target.id).attr("action"), e.target.id, (data) => {	  
+	ReactDOM.render(
+		<ServerDomoList domos={data.domos} csrf={$("token").val()}/>, document.querySelector("#domoList")
+	);
+  });
+};
+
 const handleId = (e) => {
   e.preventDefault();
     
@@ -77,6 +102,52 @@ const DomoForm = (props) => {
             <input className="makeDomoSubmit" onClick={hideModal} type="button" value="Exit"/>
         </div>
     </form>
+  );
+};
+
+const ServerDomoList = function(props) { 
+  document.getElementById("cPassButton").style.display = "none";
+    
+  if(props.domos.length === 0) {
+    return (
+      <div className="domoList">
+        <h3 className="emptyDomo">
+        <br/>
+        <br/>
+        <br/>
+        </h3>
+      </div>
+    );
+  }
+
+  const serverDomoNodes = props.domos.map(function(domo) {
+        return (
+          <div key={domo._id} className="blue">
+            <h3 className="domoTitle">{domo.title}</h3>
+            <h4 className="domoDate">Created: <br/> {domo.date}  </h4>
+            <div className="domoBody">{domo.body}</div>
+            <form id={domo._id}
+                  onSubmit={handleReport}
+                  name="reportDomo"
+                  action="/reportDomo"
+                  method="POST"
+            >
+                <input type="hidden" name="_id" value={domo._id}/>
+                <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+                <input className="makeDomoReport" type="submit" value="Report"/>
+            </form>
+          </div>
+        );
+  });
+
+    //console.log(props.domos);
+    //console.log(props.domo);
+    //console.log(props.domoNodes);
+    
+  return (
+    <div className="domoList">
+      {serverDomoNodes}
+    </div>
   );
 };
 
@@ -184,11 +255,16 @@ const FriendList = function(props) {
 		}
 		
         return (
-          <div id={friend._id} className="blue" onClick={loadFriend}>
-            <h3 id={friend._id} className="friendTitle">{friend.username}</h3>
-                <input type='hidden' name='_id' id="_id" value={friend._id} />
-            <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
-          </div>
+            <form key={friend._id} id={friend._id}
+                  onSubmit={handleFriend}
+                  name="getDomosByOwner"
+                  action="/getDomosByOwner"
+                  method="GET"
+            >
+                <input type="hidden" name="_id" value={friend._id}/>
+                <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+                <input className="blue" type="submit" value={friend.username}/>
+            </form>
         );
   });
     

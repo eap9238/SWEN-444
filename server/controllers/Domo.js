@@ -72,12 +72,10 @@ const getDomosByOwner = (request, response) => {
   const req = request;
   const res = response;
 	
-  console.log(req.session);
-  console.log(req.session._id);
-  console.log(req.session.accoount._id);
+  const id = req.url.substring(17, 41);
     
     // Actually getting the Domos
-  return Domo.DomoModel.findByOwner(req.body._id, (err, docs) => {
+  return Domo.DomoModel.findByOwner(id, (err, docs) => {
     if (err) {
       console.log(err);
       return res.status(400).json({ error: 'An error occured' });

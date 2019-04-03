@@ -43,6 +43,29 @@ var handleDelete = function handleDelete(e) {
   });
 };
 
+var handleReport = function handleReport(e) {
+  e.preventDefault();
+
+  $("#domoMessage").animate({ width: 'hide' }, 350);
+
+  //MARK PUT CODE TO ACTIVATE ON REPORT HERE
+  //DATA CAN BE FETCHED FROM SOURCE USING {e.target}
+
+  console.log("Post Reported");
+};
+
+var handleFriend = function handleFriend(e) {
+  e.preventDefault();
+
+  $("#domoMessage").animate({ width: 'hide' }, 350);
+
+  console.log(e.target.id);
+
+  sendAjax('GET', $("#" + e.target.id).attr("action"), e.target.id, function (data) {
+    ReactDOM.render(React.createElement(ServerDomoList, { domos: data.domos, csrf: $("token").val() }), document.querySelector("#domoList"));
+  });
+};
+
 var handleId = function handleId(e) {
   e.preventDefault();
 
@@ -86,6 +109,72 @@ var DomoForm = function DomoForm(props) {
       React.createElement("input", { className: "makeDomoSubmit", type: "submit", value: "Post" }),
       React.createElement("input", { className: "makeDomoSubmit", onClick: hideModal, type: "button", value: "Exit" })
     )
+  );
+};
+
+var ServerDomoList = function ServerDomoList(props) {
+  document.getElementById("cPassButton").style.display = "none";
+
+  if (props.domos.length === 0) {
+    return React.createElement(
+      "div",
+      { className: "domoList" },
+      React.createElement(
+        "h3",
+        { className: "emptyDomo" },
+        React.createElement("br", null),
+        React.createElement("br", null),
+        React.createElement("br", null)
+      )
+    );
+  }
+
+  var serverDomoNodes = props.domos.map(function (domo) {
+    return React.createElement(
+      "div",
+      { key: domo._id, className: "blue" },
+      React.createElement(
+        "h3",
+        { className: "domoTitle" },
+        domo.title
+      ),
+      React.createElement(
+        "h4",
+        { className: "domoDate" },
+        "Created: ",
+        React.createElement("br", null),
+        " ",
+        domo.date,
+        "  "
+      ),
+      React.createElement(
+        "div",
+        { className: "domoBody" },
+        domo.body
+      ),
+      React.createElement(
+        "form",
+        { id: domo._id,
+          onSubmit: handleReport,
+          name: "reportDomo",
+          action: "/reportDomo",
+          method: "POST"
+        },
+        React.createElement("input", { type: "hidden", name: "_id", value: domo._id }),
+        React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf }),
+        React.createElement("input", { className: "makeDomoReport", type: "submit", value: "Report" })
+      )
+    );
+  });
+
+  //console.log(props.domos);
+  //console.log(props.domo);
+  //console.log(props.domoNodes);
+
+  return React.createElement(
+    "div",
+    { className: "domoList" },
+    serverDomoNodes
   );
 };
 
@@ -220,15 +309,16 @@ var FriendList = function FriendList(props) {
     };
 
     return React.createElement(
-      "div",
-      { id: friend._id, className: "blue", onClick: loadFriend },
-      React.createElement(
-        "h3",
-        { id: friend._id, className: "friendTitle" },
-        friend.username
-      ),
-      React.createElement("input", { type: "hidden", name: "_id", id: "_id", value: friend._id }),
-      React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf })
+      "form",
+      { key: friend._id, id: friend._id,
+        onSubmit: handleFriend,
+        name: "getDomosByOwner",
+        action: "/getDomosByOwner",
+        method: "GET"
+      },
+      React.createElement("input", { type: "hidden", name: "_id", value: friend._id }),
+      React.createElement("input", { type: "hidden", id: "token", name: "_csrf", value: props.csrf }),
+      React.createElement("input", { className: "blue", type: "submit", value: friend.username })
     );
   });
 
@@ -498,17 +588,11 @@ var NoteCount = function NoteCount(props) {
 };
 
 var loadDomosFromServer = function loadDomosFromServer(csrf) {
-  sendAjax('GET', '/getDomos', null, function (data) {
-    ReactDOM.render(React.createElement(DomoList, { domos: data.domos, csrf: csrf }), document.querySelector("#domoList"));
+  sendAjax('GET', '/getAccount', null, function (acc) {
+    sendAjax('GET', '/getDomos', acc._id, function (data) {
+      ReactDOM.render(React.createElement(DomoList, { domos: data.domos, csrf: csrf }), document.querySelector("#domoList"));
+    });
   });
-
-  /*
-  sendAjax('GET', '/getFriends', null, (data) => {
-  ReactDOM.render(
-    <FriendList friends={data.friends} csrf={csrf}/>, document.querySelector("#friendList")
-  );
-  });
-  */
 };
 
 var loadAccountsFromServer = function loadAccountsFromServer(csrf) {
