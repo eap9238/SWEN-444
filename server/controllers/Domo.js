@@ -72,9 +72,9 @@ const getDomosByOwner = (request, response) => {
   const req = request;
   const res = response;
 	
-  console.log(req.body);
-  console.log(req.body._id);
-  console.log(req.body.id);
+  console.log(req.session);
+  console.log(req.session._id);
+  console.log(req.session.accoount._id);
     
     // Actually getting the Domos
   return Domo.DomoModel.findByOwner(req.body._id, (err, docs) => {
