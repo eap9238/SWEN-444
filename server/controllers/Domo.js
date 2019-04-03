@@ -71,6 +71,10 @@ const getDomos = (request, response) => {
 const getDomosByOwner = (request, response) => {
   const req = request;
   const res = response;
+	
+  console.log(req.body);
+  console.log(req.body._id);
+  console.log(req.body.id);
     
     // Actually getting the Domos
   return Domo.DomoModel.findByOwner(req.body._id, (err, docs) => {
@@ -89,7 +93,6 @@ const getDomosByOwner = (request, response) => {
 const deleteDomo = (request, response) => {
   const req = request;
   const res = response;
-  // console.log(req.body);
 
   // find the domo that needs killing
   return Domo.DomoModel.removeByID(req.body._id, (err) => {
