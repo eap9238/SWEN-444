@@ -213,6 +213,11 @@ var SignupWindow = function SignupWindow(props) {
   );
 };
 
+var createHomeWindow = function createHomeWindow(csrf) {
+    console.log('Create Home Window');
+    ReactDOM.render(React.createElement(HomeWindow, {csrf: csrf}), document.querySelector('#content'))
+}
+
 // createLoginWindow()
 var createLoginWindow = function createLoginWindow(csrf) {
   console.log('Create Login Window');
@@ -237,6 +242,13 @@ var CopyRight = function CopyRight(props) {
 var setup = function setup(csrf) {
   var loginButton = document.querySelector('#loginButton');
   var signupButton = document.querySelector('#signupButton');
+  var homeButton = document.querySelector('#homeButton')
+
+  homeButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    createHomeWindow(csrf);
+    return false;
+  });
 
   signupButton.addEventListener('click', function (e) {
     e.preventDefault();
