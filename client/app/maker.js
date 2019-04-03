@@ -17,12 +17,6 @@ const handleDomo = (e) => {
   return false;
 };
 
-const showModal = (e) => {
-  //e.preventDefault();
-    console.log("Yo");
-  //document.getElementById("domoForm").style.display = "block";
-};
-
 const hideModal = (e) => {
   e.preventDefault();
     
@@ -62,7 +56,7 @@ const handleFriend = (e) => {
     
   $("#domoMessage").animate({width:'hide'}, 350);
     
-  console.log(e.target.id);
+  //console.log(e.target.id);
 	
   sendAjax('GET', $("#" + e.target.id).attr("action"), e.target.id, (data) => {	  
 	ReactDOM.render(
@@ -252,7 +246,7 @@ const FriendList = function(props) {
   const friendNodes = props.friends.map(function(friend) {
 		const loadFriend = (e) => {
 			const {id} = e.target;
-			console.log(id);
+			//console.log(id);
 			
 			sendAjax('GET', '/getDomosByOwner', id, (data) => {
 				ReactDOM.render(
@@ -508,7 +502,7 @@ const setup = function(csrf) {
     createMyAccount(csrf);
     
     sendAjax('GET', '/getAccount', null, (acc) => {
-        console.log(acc);
+        //console.log(acc);
         
         sendAjax('GET', '/getDomos', null, (data) => {
             ReactDOM.render(
@@ -518,7 +512,7 @@ const setup = function(csrf) {
     });
     
     sendAjax('GET', '/getAccounts', null, (accs) => {
-        console.log(accs);
+        //console.log(accs);
     });
       
     return false;
