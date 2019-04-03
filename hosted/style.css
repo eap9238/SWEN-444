@@ -82,7 +82,7 @@ tr:nth-child(even) {
     padding-left: 15px;
     padding-top: 0px;
     
-    background-color: #55acee;
+    background-color: #EB0D23;
     border: 2p solid #B0B0B0;
     border-radius: 25px;
 }
@@ -117,11 +117,14 @@ nav:nth-child(1) {
 
 .navlink {
     padding: 5px;
-    padding-top: 12px;
+    padding-top: 20px;
     padding-left: 20px;
     color: white;
     font-size: 1.3em;
     float: left;
+    border-style: groove;
+    border-width: 2px;
+    border-color: black;
 }
 
 .navstud {
@@ -357,10 +360,11 @@ nav:nth-child(1) {
     margin: 0 auto;
     padding-top: 100px;
     padding: 5px;
+    background-color: #919090;
 }
 
 #friends {
-    width: 20%;
+    width: 15%;
     height: calc(100% - (50px));
     float: left;
     border: 2px solid #55acee;
