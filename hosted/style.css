@@ -83,7 +83,7 @@ tr:nth-child(even) {
     padding-top: 0px;
     
     background-color: #58CBF1;
-    border: 2p solid #B0B0B0;
+    border: 2px solid black;
     border-radius: 25px;
 }
 
@@ -125,8 +125,10 @@ nav:nth-child(1) {
     border-style: solid;
     border-width: 3px;
     border-color: black;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .navstud {
@@ -192,7 +194,7 @@ nav:nth-child(1) {
     float: right;
     margin-right: 20px;
     text-align: right;
-    color: #ECECEC;
+    visibility: hidden;
 }
 
 .domoFormObject {
@@ -256,7 +258,7 @@ nav:nth-child(1) {
     width: 90px;
     background-color: #F2F5F2;
     border-radius: 2px;
-    color: #F2F5F2;
+    color: black;
     border-color: black;
     text-decoration: none;
 }
@@ -665,7 +667,7 @@ nav:nth-child(1) {
     width: 80%;
     margin: auto;
     margin-top: 20px;
-    border: 2px solid #000000;
+    border: 2px solid #393939;
     border-radius: 4px;
     background-color: #F2F5F2;
     padding: 10px;
@@ -675,7 +677,7 @@ nav:nth-child(1) {
 
 .blue:hover {
     transition: border-color 0.2s ease-out;
-    border-color: rgba(255,255,255, 0.8);
+    border-color: black
     transition: background-color 2.6s ease-out;
     background-color: #F9FAF9;
 }
