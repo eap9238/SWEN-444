@@ -37,8 +37,12 @@ const handleReport = (e) => {
   e.preventDefault();
     
   $("#domoMessage").animate({width:'hide'}, 350);
+
+  sendAjax('DELETE', $("#" + e.target.id).attr("action"), $("#" + e.target.id).serialize(), function(){
+    loadDomosFromServer($("token").val());
+  });
     
-  e.ReportForm();
+  //e.ReportForm();
 	
   console.log("Post Reported");
 };
