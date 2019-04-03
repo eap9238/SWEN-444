@@ -52,6 +52,13 @@ const handleReport = (e) => {
 
 const handleFriend = (e) => {
   e.preventDefault();
+	
+  document.getElementById("mAccount").style.display = "block";
+  document.getElementById("cPassButton").style.display = "none";
+  document.getElementById("friends").style.display = "none";
+  document.getElementById("content").style.display = "none";
+  document.getElementById("domos").style.display = "block";
+  document.getElementById("modal").style.display = "none";
     
   $("#domoMessage").animate({width:'hide'}, 350);
     
