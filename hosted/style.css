@@ -82,8 +82,8 @@ tr:nth-child(even) {
     padding-left: 15px;
     padding-top: 0px;
     
-    background-color: #55acee;
-    border: 2p solid #B0B0B0;
+    background-color: #58CBF1;
+    border: 2px solid black;
     border-radius: 25px;
 }
 
@@ -102,8 +102,11 @@ tr:nth-child(even) {
 
 nav {
     width: 100%;
-    height: 50px;
-    background-color: #55acee;
+    height: 35px;
+    background-color: #ffffff;
+    border-style: groove;
+    border-width: 3px;
+    border-color: black;
 }
 
 nav:nth-child(1) {
@@ -116,19 +119,18 @@ nav:nth-child(1) {
 }
 
 .navlink {
-    padding: 5px;
-    padding-top: 12px;
-    padding-left: 20px;
-    color: white;
-    font-size: 1.3em;
+    color: #3399FF;
+    font-size: 1em;
     float: left;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .navstud {
-    padding: 5px;
-    padding-top: 12px;
-    padding-right: 20px;
-    color: white;
+    color: black;
     font-size: 1.3em;
     float: right;
 }
@@ -138,13 +140,13 @@ nav:nth-child(1) {
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
-    background-color: #55acee;
+    background-color: #3399FF;
     transition: background-color 0.4s ease;
 }
 
 .navlink a:hover {
     transition: background-color 0.8s ease;
-    background-color: #66bdff;
+    background-color: #388BCA;
 }
 
 .modalForm {
@@ -190,15 +192,15 @@ nav:nth-child(1) {
     float: right;
     margin-right: 20px;
     text-align: right;
+    visibility: hidden;
 }
 
 .domoFormObject {
-    background-color: #55acee;
+    background-color: #919090;
     border-radius: 4px;
-    border: 2px solid #338acc;
+    border: 2px solid #DFDFDF;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
     width: 385px;
 }
 
@@ -217,7 +219,7 @@ nav:nth-child(1) {
     font-size: 1.2em;
     /* float: left; */
     /* float: left; */
-    color: white;
+    color: black;
 }
 
 .domoForm input[type=text], textarea, select, input[type=date] {
@@ -252,19 +254,20 @@ nav:nth-child(1) {
     transition: background-color 0.4s ease;
     display: inline;
     width: 90px;
-    background-color: #55acee;
+    background-color: #F2F5F2;
     border-radius: 2px;
-    color: white;
+    color: black;
+    border-color: black;
     text-decoration: none;
 }
 
 .makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
-    color: white;
+    color: black;
 }
 
 .makeDomoSubmit:hover {
     transition: background-color 0.4s ease;
-    background-color: #338acc;
+    background-color: #D7D7D7;
 }
 
 .formSubmit {
@@ -275,9 +278,9 @@ nav:nth-child(1) {
     margin-top: 14px;
     font-size: 1.2em;
     width: 100px;
-    background-color: #55acee;
+    background-color: #00CC00;
     border-radius: 2px;
-    border-color: #66acee;
+    border-color: #00B500;
     padding: 3px 0px;
     color: white;
     text-decoration: none;
@@ -289,7 +292,7 @@ nav:nth-child(1) {
 
 .formSubmit:hover {
     transition: background-color 0.4s ease;
-    background-color: #338acc;
+    background-color: #00B500;
 }
 
 #user, #pass, #pass2 {
@@ -352,18 +355,19 @@ nav:nth-child(1) {
     width: 80%;
     height: calc(100% - (50px));
     float: right;
-    border: 2px solid #55acee;
+    border: 2px solid #000000;
     //order-radius: 4px;
     margin: 0 auto;
     padding-top: 100px;
     padding: 5px;
+    background-color: #CCCCCC;
 }
 
 #friends {
     width: 20%;
     height: calc(100% - (50px));
     float: left;
-    border: 2px solid #55acee;
+    border: 2px solid #000000;
     //border-radius: 4px;
     margin: 0 auto;
     padding-top: 100px;
@@ -661,9 +665,9 @@ nav:nth-child(1) {
     width: 80%;
     margin: auto;
     margin-top: 20px;
-    border: 2px solid #30BCED;
+    border: 2px solid #393939;
     border-radius: 4px;
-    background-color: #30BCED;
+    background-color: #F2F5F2;
     padding: 10px;
     min-height:60px;
     overflow: hidden;
@@ -671,9 +675,9 @@ nav:nth-child(1) {
 
 .blue:hover {
     transition: border-color 0.2s ease-out;
-    border-color: rgba(255,255,255, 0.8);
+    border-color: black
     transition: background-color 2.6s ease-out;
-    background-color: #08AFE6;
+    background-color: #F9FAF9;
 }
 
 .blue > .domoBody {
@@ -683,10 +687,10 @@ nav:nth-child(1) {
     padding: 5px;
     padding-right: 40px;
     font-size: 1.25em;
-    background-color: #58CBF1;
-    border-left: 6px solid #86D9F5;
-    margin-top: 10px;
-    margin-bottom: 30px;
+    background-color: #ECECEC;
+    border: 1px solid #D4D4D4;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .blue .makeDomoDelete {
@@ -694,9 +698,9 @@ nav:nth-child(1) {
     display: block;
     width: 24px;    
     height: 24px;
-    background-color: #58CBF1;
+    background-color: red;
     text-align: center;
-    border: 2px solid #58CBF1;
+    border: 2px solid black;
     border-radius: 4px;
     color: white;
     text-decoration: none;
@@ -712,9 +716,9 @@ nav:nth-child(1) {
     display: block;
     //width: 24px;    
     height: 24px;
-    background-color: #58CBF1;
+    background-color: red;
     text-align: center;
-    border: 2px solid #58CBF1;
+    border: 2px solid red;
     border-radius: 4px;
     color: white;
     text-decoration: none;
@@ -758,7 +762,7 @@ div.domoBody {
     padding: 5px;
     padding-right: 40px;
     font-size: 1.25em;
-    background-color: #90D1FF;
+    background-color: #F9FAF9;
     border-left: 6px solid #C5E7FF;
     margin-top: 10px;
     margin-bottom: 30px;
@@ -772,6 +776,7 @@ div.domoBody {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
+  background-color: #CCCCCC;
 }
 
 .form-signin {
