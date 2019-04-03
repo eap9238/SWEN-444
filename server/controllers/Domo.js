@@ -57,6 +57,22 @@ const getDomos = (request, response) => {
   const res = response;
     
     // Actually getting the Domos
+  return Domo.DomoModel.findByOwner(req.body.id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
+
+    return res.json({ domos: docs });
+  });
+};
+
+// getDomos()
+const getDomosByOwner = (request, response) => {
+  const req = request;
+  const res = response;
+    
+    // Actually getting the Domos
   return Domo.DomoModel.findByOwner(req.session.account._id, (err, docs) => {
     if (err) {
       console.log(err);
@@ -88,5 +104,6 @@ const deleteDomo = (request, response) => {
 
 module.exports.makerPage = makerPage;
 module.exports.getDomos = getDomos;
+module.exports.getDomosByOwner = getDomosByOwner;
 module.exports.make = makeDomo;
 module.exports.deleteDomo = deleteDomo;

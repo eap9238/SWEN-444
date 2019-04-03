@@ -175,6 +175,12 @@ const FriendList = function(props) {
 		const loadFriend = (e) => {
 			const {id} = e.target;
 			console.log(id);
+			
+			sendAjax('GET', '/getDomosByOwner', id, (data) => {
+				ReactDOM.render(
+				  <DomoList domos={data.domos} csrf={props.csrf}/>, document.querySelector("#domoList")
+				);
+			});
 		}
 		
         return (

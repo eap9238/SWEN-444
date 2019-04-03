@@ -213,6 +213,10 @@ var FriendList = function FriendList(props) {
       var id = e.target.id;
 
       console.log(id);
+
+      sendAjax('GET', '/getDomosByOwner', id, function (data) {
+        ReactDOM.render(React.createElement(DomoList, { domos: data.domos, csrf: props.csrf }), document.querySelector("#domoList"));
+      });
     };
 
     return React.createElement(

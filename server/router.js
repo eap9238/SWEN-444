@@ -5,6 +5,7 @@ const mid = require('./middleware');
 const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
   app.get('/getDomos', mid.requiresLogin, controllers.Domo.getDomos);
+  app.get('/getDomosByOwner', mid.requiresLogin, controllers.Domo.getDomosByOwner);
   app.get('/getAccounts', mid.requiresLogin, controllers.Account.getAccounts);
   app.get('/getFriends', mid.requiresLogin, controllers.Account.getFriends);
   app.get('/getAccount', mid.requiresLogin, controllers.Account.getAccount);
