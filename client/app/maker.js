@@ -384,11 +384,13 @@ const NoteCount = function(props) {
 };
 
 const loadDomosFromServer = (csrf) => {
-  sendAjax('GET', '/getDomos', account._id, (data) => {
-    ReactDOM.render(
-      <DomoList domos={data.domos} csrf={csrf}/>, document.querySelector("#domoList")
-    );
-  });
+	sendAjax('GET', '/getAccount', null, (acc) => {
+		sendAjax('GET', '/getDomos', acc._id, (data) => {
+			ReactDOM.render(
+				<DomoList domos={data.domos} csrf={csrf}/>, document.querySelector("#domoList")
+			);
+		});
+    });
 };
 
 const loadAccountsFromServer = (csrf) => {
