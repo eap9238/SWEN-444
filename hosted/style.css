@@ -105,7 +105,7 @@ nav {
     height: 35px;
     background-color: #ffffff;
     border-style: groove;
-    border-width: 2px;
+    border-width: 3px;
     border-color: black;
 }
 
@@ -125,7 +125,8 @@ nav:nth-child(1) {
     border-style: solid;
     border-width: 1px;
     border-color: black;
-    padding: 33px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .navstud {
