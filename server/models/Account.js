@@ -49,7 +49,7 @@ const AccountSchema = new mongoose.Schema({
   friends: {
     type: [String],
     value: [],
-    default: ["5ca4da5530fc612fa452a0ba", "5ca4da6530fc612fa452a0bc"],
+    default: ["5ca3fd10f65f4e00166394e1", "5ca3fd2fc666690016995ab2"],
   },
 });
 
