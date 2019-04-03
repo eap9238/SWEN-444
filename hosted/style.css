@@ -120,10 +120,10 @@ nav:nth-child(1) {
 
 .navlink {
     color: #3399FF;
-    font-size: 1em;
+    font-size: 1.3em;
     float: left;
     border-style: solid;
-    border-width: 3px;
+    border-width: 2px;
     border-color: black;
     padding-top: 3px;
     padding-bottom: 3px;
