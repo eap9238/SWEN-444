@@ -38,8 +38,7 @@ const handleReport = (e) => {
     
   $("#domoMessage").animate({width:'hide'}, 350);
     
-  //MARK PUT CODE TO ACTIVATE ON REPORT HERE
-  //DATA CAN BE FETCHED FROM SOURCE USING {e.target}
+  e.ReportForm();
 	
   console.log("Post Reported");
 };
@@ -82,6 +81,37 @@ const DomoForm = (props) => {
     
   return (
     <form id="domoForm" onSubmit={handleDomo} name="domoForm" action="/maker" method="POST" className="domoForm">
+        <div className="DomoFormObject"> 
+            <label htmlFor="title">Title: </label>
+            <br/>
+            <input id="domoTitle" type="text" name="title" placeholder="Note Title"/>
+      
+            <br/>
+            <br/>
+      
+            <label htmlFor="body">Contents: </label>
+            <br/>
+            <textarea id="domoBody" name="body" cols="27" wrap="hard" placeholder="Note Contents"/>
+
+            <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+      
+            <br/>
+            <br/>
+      
+            <input className="makeDomoSubmit" type="submit" value="Post"/>
+            <input className="makeDomoSubmit" onClick={hideModal} type="button" value="Exit"/>
+        </div>
+    </form>
+  );
+};
+
+const ReportForm = (props) => {    
+  document.getElementById("modal").onclick = function() {
+      document.getElementById("domoForm").style.display = "block";
+  };
+    
+  return (
+    <form id="reportForm" onSubmit={handleDomo} name="domoForm" action="/maker" method="POST" className="domoForm">
         <div className="DomoFormObject"> 
             <label htmlFor="title">Title: </label>
             <br/>
