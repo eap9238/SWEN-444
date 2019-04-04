@@ -40,6 +40,11 @@ const handleReport = (e) => {
     
   //sendAjax('POST', $("#reportForm").attr("action"), $("#reportForm").serialize(), e.ReportForm());
 	
+    
+  ReactDOM.render(
+    <ReportForm csrf={csrf} />, document.querySelector("#makeDomo")
+  );
+	
   console.log("Post Reported");
 };
 

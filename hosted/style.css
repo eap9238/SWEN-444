@@ -377,6 +377,8 @@ nav:nth-child(1) {
     padding: 5px;
 }
 
+/*
+
 @media (max-width: 912px) {
     #domos {
         width: 28.5em;
@@ -387,6 +389,8 @@ nav:nth-child(1) {
         padding: 5px;
     }
 }
+
+*/
 
 .domoList .friendsList{
     overflow: hidden;
