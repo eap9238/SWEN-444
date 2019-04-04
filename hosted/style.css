@@ -120,14 +120,14 @@ nav:nth-child(1) {
 
 .navlink {
     color: #3399FF;
-    font-size: 1em;
+    font-size: 1.3em;
     float: left;
     border-style: solid;
-    border-width: 3px;
+    border-width: 2px;
     border-color: black;
     padding-top: 3px;
     padding-bottom: 3px;
-    border-radius: 4px;
+    border-radius: 0px;
 }
 
 .navstud {
@@ -140,7 +140,6 @@ nav:nth-child(1) {
     color: white;
     text-decoration: none;
     padding: 5px;
-    border-radius: 4px;
     background-color: #3399FF;
     transition: background-color 0.4s ease;
 }
