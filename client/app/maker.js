@@ -443,12 +443,6 @@ const DomoCount = function(props) {
     );
 };
 
-const CopyRight = function(props) {    
-    return (
-        <div>Post &copy; {new Date().getFullYear()}</div>
-    );
-};
-
 const NoteCount = function(props) {
     /*
 	console.log(props.account.getAll);
@@ -579,10 +573,6 @@ const setup = function(csrf) {
             
   ReactDOM.render(
     <FriendList friends={[]} csrf={csrf}/>, document.querySelector("#friendList")
-  );
-
-  ReactDOM.render(
-    <CopyRight csrf={csrf}/>, document.querySelector("#copyright")
   );
 
   loadDomosFromServer(csrf);
