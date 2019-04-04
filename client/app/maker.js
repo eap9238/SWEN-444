@@ -38,7 +38,7 @@ const handleReport = (e) => {
     
   $("#domoMessage").animate({width:'hide'}, 350);
     
-  sendAjax('POST', $("#reportForm").attr("action"), $("#reportForm").serialize(), e.ReportForm());
+  //sendAjax('POST', $("#reportForm").attr("action"), $("#reportForm").serialize(), e.ReportForm());
 	
   console.log("Post Reported");
 };
