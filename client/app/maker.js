@@ -116,7 +116,7 @@ const ReportForm = (props) => {
   };
     
   return (
-    <form id="reportForm" onSubmit={handleDomo} name="reportForm" action="/maker" method="POST" className="reoirtForm">
+    <form id="reportForm" name="reportForm" className="reportForm">
         <div className="DomoFormObject"> 
             <label htmlFor="title">Title: </label>
             <br/>
@@ -134,7 +134,7 @@ const ReportForm = (props) => {
             <br/>
             <br/>
       
-            <input className="makeDomoSubmit" type="submit" value="Post"/>
+            <input className="makeDomoSubmit" type={hideModal} value="Post"/>
             <input className="makeDomoSubmit" onClick={hideModal} type="button" value="Exit"/>
         </div>
     </form>
