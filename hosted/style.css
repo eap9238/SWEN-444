@@ -253,6 +253,44 @@ nav:nth-child(1) {
     width: 80px;
 }
 
+.reportForm label {
+    display: inline-block;
+    width: 160px;
+    margin-left: 10px;
+    font-size: 1.2em;
+    /* float: left; */
+    /* float: left; */
+    color: black;
+}
+
+.reportForm input[type=text], textarea, select, input[type=date] {
+    margin-left: 10px;
+    /* margin: auto; */
+    width: 320px;
+    height: 40px;
+    /* float:left; */
+}
+
+.reportForm input[type=text]{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.reportForm textarea {
+    resize: none;
+    padding-top: 5px;
+    height: 160px;
+}
+
+.reportForm textarea, select, option, input[type=date] {
+    font-size: 1.25em;
+}
+
+.reportForm select, option {
+    height: 80px;
+    width: 80px;
+}
+
 .makeDomoSubmit {
     transition: background-color 0.4s ease;
     display: inline;
