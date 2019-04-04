@@ -43,11 +43,12 @@ const handleReport = (e) => {
   e.preventDefault();
     
   $("#domoMessage").animate({width:'hide'}, 350);	
-    
+   
   ReactDOM.render(
     <ReportForm csrf={$("token").val()} />, document.querySelector("#makeDomo")
   );
 	
+  document.getElementById("reportForm").style.display = "block";
   console.log("Post Reported");
 };
 
@@ -85,6 +86,10 @@ const handleId = (e) => {
 const DomoForm = (props) => {    
   document.getElementById("modal").onclick = function() {
       document.getElementById("domoForm").style.display = "block";
+	  
+	  ReactDOM.render(
+		<ReportForm csrf={$("token").val()} />, document.querySelector("#makeDomo")
+	  );
   };
     
   return (
@@ -562,6 +567,10 @@ const setup = function(csrf) {
     
   ReactDOM.render(
     <DomoForm csrf={csrf} />, document.querySelector("#makeDomo")
+  );
+    
+  ReactDOM.render(
+    <ReportForm csrf={csrf} />, document.querySelector("#makeDomo")
   );
 
   ReactDOM.render(
