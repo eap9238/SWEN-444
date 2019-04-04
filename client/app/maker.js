@@ -128,7 +128,7 @@ const ReportForm = (props) => {
             <br/>
             <br/>
       
-            <input className="makeDomoSubmit" type={hideReport} value="Post"/>
+            <input className="makeDomoSubmit" onClick={hideReport} value="Submit"/>
             <input className="makeDomoSubmit" onClick={hideReport} type="button" value="Exit"/>
         </div>
     </form>
