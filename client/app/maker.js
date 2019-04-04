@@ -42,10 +42,7 @@ const handleDelete = (e) => {
 const handleReport = (e) => {
   e.preventDefault();
     
-  $("#domoMessage").animate({width:'hide'}, 350);
-    
-  //sendAjax('POST', $("#reportForm").attr("action"), $("#reportForm").serialize(), e.ReportForm());
-	
+  $("#domoMessage").animate({width:'hide'}, 350);	
     
   ReactDOM.render(
     <ReportForm csrf={$("token").val()} />, document.querySelector("#makeDomo")
@@ -124,16 +121,7 @@ const ReportForm = (props) => {
   return (
     <form id="reportForm" name="reportForm" className="reportForm">
         <div className="DomoFormObject"> 
-            <label htmlFor="title">Title: </label>
-            <br/>
-            <input id="domoTitle" type="text" name="title" placeholder="Note Title"/>
-      
-            <br/>
-            <br/>
-      
-            <label htmlFor="body">Contents: </label>
-            <br/>
-            <textarea id="domoBody" name="body" cols="27" wrap="hard" placeholder="Note Contents"/>
+            <textarea id="domoBody" name="body" cols="27" wrap="hard" placeholder="Reason for report:"/>
 
             <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
       
