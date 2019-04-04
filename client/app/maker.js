@@ -42,7 +42,7 @@ const handleReport = (e) => {
 	
     
   ReactDOM.render(
-    <ReportForm csrf={csrf} />, document.querySelector("#makeDomo")
+    <ReportForm csrf={$("token").val()} />, document.querySelector("#makeDomo")
   );
 	
   console.log("Post Reported");
