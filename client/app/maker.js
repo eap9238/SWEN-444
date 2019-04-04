@@ -38,7 +38,9 @@ const handleReport = (e) => {
     
   $("#domoMessage").animate({width:'hide'}, 350);
     
-  e.ReportForm();
+  sendAjax('POST', $("#reportForm").attr("action"), $("#reportForm").serialize(), function() {
+    loadDomosFromServer($("#token").val());
+  });
 	
   console.log("Post Reported");
 };
@@ -107,11 +109,11 @@ const DomoForm = (props) => {
 
 const ReportForm = (props) => {    
   document.getElementById("modal").onclick = function() {
-      document.getElementById("domoForm").style.display = "block";
+      document.getElementById("reportForm").style.display = "block";
   };
     
   return (
-    <form id="reportForm" onSubmit={handleDomo} name="domoForm" action="/maker" method="POST" className="domoForm">
+    <form id="reportForm" onSubmit={handleDomo} name="reportForm" action="/maker" method="POST" className="reoirtForm">
         <div className="DomoFormObject"> 
             <label htmlFor="title">Title: </label>
             <br/>
