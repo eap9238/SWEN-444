@@ -23,6 +23,12 @@ const hideModal = (e) => {
   document.getElementById("domoForm").style.display = "none";
 };
 
+const hideReport = (e) => {
+  e.preventDefault();
+    
+  document.getElementById("reportForm").style.display = "none";
+};
+
 const handleDelete = (e) => {
   e.preventDefault();
     
@@ -134,8 +140,8 @@ const ReportForm = (props) => {
             <br/>
             <br/>
       
-            <input className="makeDomoSubmit" type={hideModal} value="Post"/>
-            <input className="makeDomoSubmit" onClick={hideModal} type="button" value="Exit"/>
+            <input className="makeDomoSubmit" type={hideReport} value="Post"/>
+            <input className="makeDomoSubmit" onClick={hideReport} type="button" value="Exit"/>
         </div>
     </form>
   );
