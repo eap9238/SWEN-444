@@ -26,9 +26,9 @@ const hideModal = (e) => {
 const changeButton = (e) => {
   e.preventDefault();
     
-  console.log("Friend request sent!");
+  //console.log("Friend request sent!");
 	
-  e.target.textContent = "Friend Request Sent";
+  e.target.value = "Friend Request Sent";
   e.target.disabled = true;
 };
 
