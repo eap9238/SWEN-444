@@ -53,11 +53,11 @@ tr:nth-child(even) {
 .fRequestBtn {
     border: 2px solid #393939;
     border-radius: 4px;
-    background-color: #F2F5F2;
+    background-color: #3399FF;
 }
 
 .fRequestBtn:disabled {
-    background-color: #CCCCCC;
+    background-color: #3399FF;
 }
 
 #tContainer {
