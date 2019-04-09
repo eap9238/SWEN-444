@@ -120,11 +120,6 @@ const DomoForm = (props) => {
 };
 
 const ReportForm = (props) => {    
-  document.getElementById("modal").onclick = function() {
-      document.getElementById("reportDomo").style.display = "block";
-      document.getElementById("makeDomo").style.display = "none";
-  };
-    
   return (
     <form id="reportForm" name="reportForm" className="reportForm">
         <div className="ReportFormObject"> 
