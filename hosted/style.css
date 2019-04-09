@@ -57,7 +57,7 @@ tr:nth-child(even) {
 }
 
 .fRequestBtn:disabled {
-    background-color: #3399FF;
+    background-color: #388BCA;
 }
 
 #tContainer {
