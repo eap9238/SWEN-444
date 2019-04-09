@@ -88,7 +88,7 @@ const DomoForm = (props) => {
       document.getElementById("domoForm").style.display = "block";
 	  
 	  ReactDOM.render(
-		<ReportForm csrf={$("token").val()} />, document.querySelector("#makeDomo")
+		<DomoForm csrf={$("token").val()} />, document.querySelector("#makeDomo")
 	  );
   };
     
@@ -125,7 +125,7 @@ const ReportForm = (props) => {
     
   return (
     <form id="reportForm" name="reportForm" className="reportForm">
-        <div className="DomoFormObject"> 
+        <div className="ReportFormObject"> 
             <textarea id="domoBody" name="body" cols="27" wrap="hard" placeholder="Reason for report:"/>
 
             <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
