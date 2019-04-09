@@ -50,6 +50,16 @@ tr:nth-child(even) {
     visibility: hidden;
 }
 
+.fRequestBtn {
+    border: 2px solid #393939;
+    border-radius: 4px;
+    background-color: #F2F5F2;
+}
+
+.fRequestBtn:disabled {
+    background-color: #CCCCCC;
+}
+
 #tContainer {
     height: calc(100% - (50px));
     width: 100%;

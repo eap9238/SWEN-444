@@ -274,7 +274,7 @@ const AccountList = function(props) {
             <h3 className="accountTitle">{account.username}</h3>
                 <input type='hidden' name='_id' id="_id" value={account._id} />
             <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
-			<input onClick={changeButton} type="button" value="Send Friend Request"></input>
+			<input onClick={changeButton} type="button" value="Send Friend Request" class="fRequestBtn"></input>
           </div>
         );
   });
