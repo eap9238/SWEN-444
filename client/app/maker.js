@@ -268,15 +268,13 @@ const AccountList = function(props) {
     );
   }
 
-  const accountNodes = props.accounts.map(function(account) {
-	  	
-	  
+  const accountNodes = props.accounts.map(function(account) {	  
         return (
           <div key={account._id} className="blue">
             <h3 className="accountTitle">{account.username}</h3>
                 <input type='hidden' name='_id' id="_id" value={account._id} />
             <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
-			<button OnClick={changeButton}>Send Friend Request</button>
+			<input OnClick={changeButton} type="button" value="Send Friend Request"></input>
           </div>
         );
   });
