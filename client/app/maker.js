@@ -45,7 +45,7 @@ const handleReport = (e) => {
   $("#domoMessage").animate({width:'hide'}, 350);	
    
   ReactDOM.render(
-    <ReportForm csrf={$("token").val()} />, document.querySelector("#makeDomo")
+    <ReportForm csrf={$("token").val()} />, document.querySelector("#reportDomo")
   );
 	
   document.getElementById("reportForm").style.display = "block";
@@ -85,8 +85,8 @@ const handleId = (e) => {
 
 const DomoForm = (props) => {    
   document.getElementById("modal").onclick = function() {
-      document.getElementById("domoForm").style.display = "block";
-      document.getElementById("reportForm").style.display = "none";
+      document.getElementById("makeDomo").style.display = "block";
+      document.getElementById("reportDomo").style.display = "none";
 	  
 	  ReactDOM.render(
 		<DomoForm csrf={$("token").val()} />, document.querySelector("#makeDomo")
@@ -121,7 +121,8 @@ const DomoForm = (props) => {
 
 const ReportForm = (props) => {    
   document.getElementById("modal").onclick = function() {
-      document.getElementById("reportForm").style.display = "block";
+      document.getElementById("reportDomo").style.display = "block";
+      document.getElementById("makeDomo").style.display = "none";
   };
     
   return (
@@ -565,7 +566,7 @@ const setup = function(csrf) {
   );
     
   ReactDOM.render(
-    <ReportForm csrf={csrf} />, document.querySelector("#makeDomo")
+    <ReportForm csrf={csrf} />, document.querySelector("#reportDomo")
   );
 
   ReactDOM.render(

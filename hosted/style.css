@@ -324,6 +324,26 @@ nav:nth-child(1) {
     background-color: #D7D7D7;
 }
 
+.reportDomoSubmit {
+    transition: background-color 0.4s ease;
+    display: inline;
+    width: 90px;
+    background-color: #F2F5F2;
+    border-radius: 2px;
+    color: black;
+    border-color: black;
+    text-decoration: none;
+}
+
+.reportDomoSubmit:link, .reportDomoSubmit:visited, .reportDomoSubmit:hover, .reportDomoSubmit:active {
+    color: black;
+}
+
+.reportDomoSubmit:hover {
+    transition: background-color 0.4s ease;
+    background-color: #D7D7D7;
+}
+
 .formSubmit {
     transition: background-color 0.4s ease;
     display: block;
