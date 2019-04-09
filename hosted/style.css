@@ -220,6 +220,15 @@ nav:nth-child(1) {
     width: 385px;
 }
 
+.reportFormObject {
+    background-color: #919090;
+    border-radius: 4px;
+    border: 2px solid #DFDFDF;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 385px;
+}
+
 #domoBody, #domoColour {
     margin-left: 10px;
 }
