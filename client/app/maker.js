@@ -86,6 +86,7 @@ const handleId = (e) => {
 const DomoForm = (props) => {    
   document.getElementById("modal").onclick = function() {
       document.getElementById("makeDomo").style.display = "block";
+      document.getElementById("domoForm").style.display = "block";
       document.getElementById("reportDomo").style.display = "none";
 	  
 	  ReactDOM.render(
