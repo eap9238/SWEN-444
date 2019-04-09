@@ -23,6 +23,13 @@ const hideModal = (e) => {
   document.getElementById("domoForm").style.display = "none";
 };
 
+const changeButton = (e) => {
+  e.preventDefault();
+    
+  e.target.textContent = "Friend Request Sent";
+  e.target.disabled = true;
+};
+
 const hideReport = (e) => {
   e.preventDefault();
     
@@ -260,11 +267,14 @@ const AccountList = function(props) {
   }
 
   const accountNodes = props.accounts.map(function(account) {
+	  	
+	  
         return (
           <div key={account._id} className="blue">
             <h3 className="accountTitle">{account.username}</h3>
                 <input type='hidden' name='_id' id="_id" value={account._id} />
             <input type="hidden" id="token" name="_csrf" value={props.csrf}/>
+			<button OnClick={changeButton}>Send Friend Request</button>
           </div>
         );
   });
