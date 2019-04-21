@@ -259,7 +259,7 @@ const AccountList = function(props) {
   if(props.accounts.length === 0) {
     return (
       <div className="accountList">
-		<input type="text" placeholder="Search..">
+		<input type="text" placeholder="Search.."/>
         <h3 className="emptyAccount">
         <br/>
         <br/>
@@ -282,7 +282,7 @@ const AccountList = function(props) {
     
   return (
     <div className="accountList">
-	  <input type="text" placeholder="Search..">
+	  <input type="text" placeholder="Search.."/>
       {accountNodes}
     </div>
   );
