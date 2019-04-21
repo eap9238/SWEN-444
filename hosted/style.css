@@ -95,15 +95,16 @@ tr:nth-child(even) {
     background-color: #58CBF1;
     border: 1px solid black;
     border-radius: 15px;
+    text-align: center;
 }
 
 #modal a {
-    text-align: center;
-    
+    /*
     color: white !important;
     text-decoration: none;
     font-size: 2.6em;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	*/
 }
 
 #logout {
