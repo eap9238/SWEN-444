@@ -67,7 +67,7 @@ const handleReport = (e) => {
     <ReportForm csrf={$("token").val()} />, document.querySelector("#reportDomo")
   );
 	
-  console.log("Post Reported");
+  alert("This post has been reported!");
 };
 
 const handleFriend = (e) => {
