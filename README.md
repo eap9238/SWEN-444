@@ -11,6 +11,10 @@ Unsupported Features:
 - Auto-translation based on lanugage choice
 - Lack of home page
 - Lack of amalgamated feed of all friends recent posts
+- Searching for friends (bar exists, does nothing)
+- Adding friends (can add them, they can't respond)
+- Can't remove friends
+- Nothing happens to reported posts
 
 Bugs:
 - Navigation bar options may not reach to the bottom of the nav bar depending on browser
