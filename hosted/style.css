@@ -62,6 +62,8 @@ tr:nth-child(even) {
 
 #tContainer {
     height: calc(100% - (35px));
+	position: fixed;
+	bottom: 0px;
     width: 100%;
     display: -ms-flexbox;
     display: flex;
@@ -448,6 +450,8 @@ nav:nth-child(1) {
 #domos {
     width: 80%;
     height: calc(100% - (35px));
+	position: fixed;
+	bottom: 0px;
     float: right;
     border: 2px solid #000000;
     //order-radius: 4px;
@@ -460,6 +464,8 @@ nav:nth-child(1) {
 #friends {
     width: 20%;
     height: calc(100% - (35px));
+	position: fixed;
+	bottom: 0px;
     float: left;
     border: 2px solid #000000;
     //border-radius: 4px;
@@ -868,6 +874,8 @@ div.domoBody {
 
 #bodyContainer {
   height: calc(100% - (35px)); 
+	position: fixed;
+	bottom: 0px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
