@@ -93,7 +93,7 @@ tr:nth-child(even) {
     
     padding: 15px;
     
-    background-color: #D3E3FC;
+    background-color: #00C4B1;
     border: 1px solid black;
     border-radius: 15px;
     text-align: center;
@@ -136,7 +136,7 @@ nav:nth-child(1) {
 
 .navlink {
     color: #00C4B1;
-    font-size: 1.2em;
+    font-size: 1.3em;
     float: left;
     border-style: solid;
     border-width: 1px;
@@ -792,7 +792,7 @@ nav:nth-child(1) {
     padding-right: 40px;
     font-size: 1.25em;
     background-color: #ECECEC;
-    border: 1px solid #D4D4D4;
+    border: 1px solid #2D4159;
     margin-top: 5px;
     margin-bottom: 10px;
 }
