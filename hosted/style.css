@@ -94,7 +94,7 @@ tr:nth-child(even) {
     padding-left: 15px;
     padding-top: 0px;
     
-    background-color: #58CBF1;
+    background-color: #D3E3FC;
     border: 1px solid black;
     border-radius: 25px;
 }
@@ -115,7 +115,7 @@ tr:nth-child(even) {
 nav {
     width: 100%;
     height: 35px;
-    background-color: #ffffff;
+    background-color: #D2FDFF;
     border-style: groove;
     border-bottom-width: 3px;
     border-color: black;
@@ -132,7 +132,7 @@ nav:nth-child(1) {
 }
 
 .navlink {
-    color: #3399FF;
+    color: #D3E3FC;
     font-size: 1.1em;
     float: left;
     border-style: solid;
@@ -140,6 +140,7 @@ nav:nth-child(1) {
     border-color: black;
     padding-top: 3px;
     padding-bottom: 3px;
+    padding-right: 5px;
     border-radius: 0px;
 }
 
@@ -465,6 +466,7 @@ nav:nth-child(1) {
     margin: 0 auto;
     padding-top: 100px;
     padding: 5px;
+    background-color: #D2FDFF;
 }
 
 /*
@@ -873,7 +875,7 @@ div.domoBody {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #CCCCCC;
+  background-color: #86B3D1;
 }
 
 .form-signin {
