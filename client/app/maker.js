@@ -41,11 +41,16 @@ const hideReport = (e) => {
 const handleDelete = (e) => {
   e.preventDefault();
     
-  $("#domoMessage").animate({width:'hide'}, 350);
-    
-  sendAjax('DELETE', $("#" + e.target.id).attr("action"), $("#" + e.target.id).serialize(), function(){
-    loadDomosFromServer($("token").val());
-  });
+	var r = confirm("Are you sure you want to delete this?");
+	if (r == true) {
+	  $("#domoMessage").animate({width:'hide'}, 350);
+
+	  sendAjax('DELETE', $("#" + e.target.id).attr("action"), $("#" + e.target.id).serialize(), function(){
+		loadDomosFromServer($("token").val());
+	  });
+	} else {
+	  //do nothing?
+	}
 };
 
 const handleReport = (e) => {
