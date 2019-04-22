@@ -38,6 +38,14 @@ const hideReport = (e) => {
   document.getElementById("reportForm").style.display = "none";
 };
 
+
+const submitReport = (e) => {
+  e.preventDefault();
+    
+  alert("This post has been reported!");
+  document.getElementById("reportForm").style.display = "none";
+};
+
 const handleDelete = (e) => {
   e.preventDefault();
     
@@ -66,8 +74,6 @@ const handleReport = (e) => {
   ReactDOM.render(
     <ReportForm csrf={$("token").val()} />, document.querySelector("#reportDomo")
   );
-	
-  alert("This post has been reported!");
 };
 
 const handleFriend = (e) => {
@@ -160,7 +166,7 @@ const ReportForm = (props) => {
             <br/>
             <br/>
       
-            <input className="makeDomoSubmit" onClick={hideReport} value="Submit"/>
+            <input className="makeDomoSubmit" onClick={submitReport} value="Submit"/>
             <input className="makeDomoSubmit" onClick={hideReport} type="button" value="Exit"/>
         </div>
     </form>
