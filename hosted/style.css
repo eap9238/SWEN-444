@@ -142,8 +142,8 @@ nav:nth-child(1) {
     border-width: 1px;
     border-color: black;
     padding-top: 3px;
-    padding-bottom: 2px;
-    border-spacing: 5px;
+    padding-bottom: 4px;
+    border-spacing: 10px;
     border-radius: 0px;
 }
 
@@ -853,10 +853,10 @@ h3.emptyDomo {
 
 h1 {
     background-color: #D8D8D8;
-    border-color: black;
+    border-color: white;
     border-width: 1px;
     border-style: solid;
-    margin-right: auto;
+    margin-right: 25px;
     ;
 
 }
