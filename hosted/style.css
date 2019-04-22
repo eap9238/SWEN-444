@@ -61,7 +61,8 @@ tr:nth-child(even) {
 }
 
 #tContainer {
-    height: calc(100% - (50px));
+  	height: calc(100% - (35px)); 
+	overflow: auto;
     width: 100%;
     display: -ms-flexbox;
     display: flex;
@@ -89,23 +90,24 @@ tr:nth-child(even) {
     bottom: 50px;
     right: 50px;
     height: 50px;
-    width: 50px;
     
-    padding-left: 15px;
-    padding-top: 0px;
+    padding: 15px;
     
     background-color: #D3E3FC;
     border: 1px solid black;
-    border-radius: 25px;
+    border-radius: 15px;
+    text-align: center;
 }
 
 #modal a {
-    text-align: center;
-    
+    color: white !important;
+	
+    /*
     color: white !important;
     text-decoration: none;
     font-size: 2.6em;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	*/
 }
 
 #logout {
@@ -447,7 +449,8 @@ nav:nth-child(1) {
 
 #domos {
     width: 80%;
-    height: calc(100% - (50px));
+    height: calc(100% - (35px)); 
+	overflow: auto;
     float: right;
     border: 2px solid #000000;
     //order-radius: 4px;
@@ -459,7 +462,8 @@ nav:nth-child(1) {
 
 #friends {
     width: 20%;
-    height: calc(100% - (50px));
+    height: calc(100% - (35px)); 
+	overflow: auto;
     float: left;
     border: 2px solid #000000;
     //border-radius: 4px;
@@ -868,7 +872,8 @@ div.domoBody {
 }
 
 #bodyContainer {
-  height: calc(100% - (50px)); 
+  height: calc(100% - (35px)); 
+  overflow: auto;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;

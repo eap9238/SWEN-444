@@ -38,14 +38,27 @@ const hideReport = (e) => {
   document.getElementById("reportForm").style.display = "none";
 };
 
+
+const submitReport = (e) => {
+  e.preventDefault();
+    
+  alert("This post has been reported!");
+  document.getElementById("reportForm").style.display = "none";
+};
+
 const handleDelete = (e) => {
   e.preventDefault();
     
-  $("#domoMessage").animate({width:'hide'}, 350);
-    
-  sendAjax('DELETE', $("#" + e.target.id).attr("action"), $("#" + e.target.id).serialize(), function(){
-    loadDomosFromServer($("token").val());
-  });
+	var r = confirm("Are you sure you want to delete this?");
+	if (r == true) {
+	  $("#domoMessage").animate({width:'hide'}, 350);
+
+	  sendAjax('DELETE', $("#" + e.target.id).attr("action"), $("#" + e.target.id).serialize(), function(){
+		loadDomosFromServer($("token").val());
+	  });
+	} else {
+	  //do nothing?
+	}
 };
 
 const handleReport = (e) => {
@@ -61,8 +74,6 @@ const handleReport = (e) => {
   ReactDOM.render(
     <ReportForm csrf={$("token").val()} />, document.querySelector("#reportDomo")
   );
-	
-  console.log("Post Reported");
 };
 
 const handleFriend = (e) => {
@@ -155,7 +166,7 @@ const ReportForm = (props) => {
             <br/>
             <br/>
       
-            <input className="makeDomoSubmit" onClick={hideReport} value="Submit"/>
+            <input className="makeDomoSubmit" onClick={submitReport} value="Submit"/>
             <input className="makeDomoSubmit" onClick={hideReport} type="button" value="Exit"/>
         </div>
     </form>
@@ -168,6 +179,9 @@ const ServerDomoList = function(props) {
   if(props.domos.length === 0) {
     return (
       <div className="domoList">
+        <h1>
+			Friend Posts
+        </h1>
         <h3 className="emptyDomo">
         <br/>
         <br/>
@@ -203,6 +217,9 @@ const ServerDomoList = function(props) {
     
   return (
     <div className="domoList">
+        <h1>
+			Friend Posts
+        </h1>
       {serverDomoNodes}
     </div>
   );
@@ -214,6 +231,9 @@ const DomoList = function(props) {
   if(props.domos.length === 0) {
     return (
       <div className="domoList">
+        <h1>
+			Your Posts
+        </h1>
         <h3 className="emptyDomo">
         <br/>
         <br/>
@@ -249,6 +269,9 @@ const DomoList = function(props) {
     
   return (
     <div className="domoList">
+        <h1>
+			Your Posts
+        </h1>
       {domoNodes}
     </div>
   );
@@ -259,6 +282,10 @@ const AccountList = function(props) {
   if(props.accounts.length === 0) {
     return (
       <div className="accountList">
+        <h1>
+			Accounts List
+        </h1>
+		<input type="text" placeholder="Search.."/>
         <h3 className="emptyAccount">
         <br/>
         <br/>
@@ -281,6 +308,10 @@ const AccountList = function(props) {
     
   return (
     <div className="accountList">
+        <h1>
+			Accounts List
+        </h1>
+	  <input type="text" placeholder="Search.."/>
       {accountNodes}
     </div>
   );
@@ -291,6 +322,9 @@ const FriendList = function(props) {
   if(props.friends.length === 0) {
     return (
       <div className="friendList">
+        <h1>
+			Friend List
+        </h1>
         <h3 className="emptyFriend">
         <br/>
         <br/>
@@ -328,6 +362,9 @@ const FriendList = function(props) {
     
   return (
     <div className="friendList">
+        <h1>
+			Friend List
+        </h1>
       {friendNodes}
     </div>
   );
